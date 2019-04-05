@@ -15,6 +15,7 @@
     height: 400px;
     width: 100%;
     border: #007BFF solid thick;
-
+    overflow: auto;
+    scrollbar-face-color: #007BFF;
 }
 
