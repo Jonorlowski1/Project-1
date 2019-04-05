@@ -18,3 +18,10 @@
     overflow: auto;
 }
 
+.songHeader,
+.songData,
+.albumHeader,
+.albumData {
+    width: 50%;
+}
+
