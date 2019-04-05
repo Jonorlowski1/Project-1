@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/toneDef.css">
 </head>
 
@@ -24,37 +24,78 @@
     </div>
 
     <div class="container">
-      <div class="row text-white">
-        <div class="col-md-4">
+      <div class="row text-white text-center">
+        <div class="col-12">
           <h1>Search Results</h1>
-        </div>
-        <div class="col-md-4 offset-4 text-center">
-          <h1>Lyrics</h1>
         </div>
       </div>
       <!--results header row ends here-->
 
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-12">
+
           <table class="table table-striped table-bordered text-center">
             <thead class="thead font-weight-bold bg-primary text-white">
               <tr>
-                <th scope="col" colspan="2">Artists</th>
-                <th scope="col" colspan="3">Songs</th>
-                <th scope="col" colspan="3">Albums</th>
+                <th scope="col" colspan="4">Songs</th>
               </tr>
             </thead>
-            <!--Put div.rows between each row?-->
+            <tbody class="text-white">
+              <tr>
+                <td colspan="2">Come Together</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <table class="table table-striped table-bordered text-center">
+            <thead class="thead font-weight-bold bg-primary text-white">
+              <tr>
+                <th scope="col" colspan="4">Albums</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr>
+                <td colspan="2">Abbey Road</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <table class="table table-striped table-bordered text-center">
+            <thead class="thead font-weight-bold bg-primary text-white">
+              <tr>
+                <th scope="col" colspan="4">Artists</th>
+              </tr>
+            </thead>
             <tbody class="text-white">
               <tr>
                 <td colspan="2">The Beatles</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+
+
+
+          <!-- <table class="table table-striped table-bordered text-center">
+            <thead class="thead font-weight-bold bg-primary text-white">
+              <tr>
+                <th scope="col" colspan="4">Songs</th>
+                <th scope="col" colspan="4">Albums</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr>
                 <td colspan="3">Abbey Road</td>
                 <td colspan="3">Come Together</td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
+          <div class="col-4 offset-4 text-center text-white">
+            <h1>Lyrics</h1>
+          </div>
+
         </div>
-          <div class="col-md-4 text-center bg-white" id="lyrics-div">
+        <div class="col-12 text-center bg-white" id="lyrics-div">
         </div>
       </div>
     </div>
