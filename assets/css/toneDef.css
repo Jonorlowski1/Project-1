@@ -18,6 +18,10 @@
     overflow: auto;
 }
 
+.navbar-header {
+    margin: 0;
+}
+
 .songHeader,
 .songData,
 .albumHeader,
