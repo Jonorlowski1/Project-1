@@ -132,15 +132,6 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// The API will call this function when the video player is ready.
-// function onPlayerReady(event) {
-//   event.target.playVideo();
-// }
-
-// function stopVideo() {
-//   player.stopVideo();
-// }
-
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var cors = 'https://cors-anywhere.herokuapp.com/'
@@ -203,10 +194,12 @@ function contactTab () {
   $('#contactPage').show();
 };
 
-
+var newMusicVideo = $('<img>').attr('id', 'musicVideoPlayer');
 
 $('#submitButton').on('click', function () {
   event.preventDefault();
+  $('#musicVideoContainer').empty();
+  $('#musicVideoContainer').append(newMusicVideo);
   displayYouTubeVideo();
   displayWikiInfo();
 
