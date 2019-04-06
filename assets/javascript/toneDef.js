@@ -17,70 +17,77 @@ function displayLyrics() {
   });
 };
 displayLyrics();
-// IP LOOKUP
-function displayEvents() {
-  var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
-  var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
-  var response_ip;
-  $.ajax({
-    url: queryURL_IP,
-    method: "GET",
-  }).then(function (response) {
 
-    console.log("user's ip")
-    console.log(response.ip)
-    response_ip = response.ip;
+// // IP LOOKUP
+// function displayEvents() {
+//   var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+//   var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+//   var response_ip;
+//   $.ajax({
+//     url: queryURL_IP,
+//     method: "GET",
+//   }).then(function (response) {
 
-    //SONGKICK EVENT LOOKUP
-    var apikey_localEvents = "926QLoynaFfTnoup"
-    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-    $.ajax({
-      url: queryURL_localEvents,
-      method: "GET",
-    }).then(function (response) {
+//     response_ip = response.ip;
+//     console.log('User IP: ' + response_ip);
 
-      console.log("songkick");
-      console.log(response);
-    })
-  });
-};
+//     //SONGKICK EVENT LOOKUP
+//     var apikey_localEvents = "926QLoynaFfTnoup"
+//     var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+//     $.ajax({
+//       url: queryURL_localEvents,
+//       method: "GET",
+//     }).then(function (response) {
 
-var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
-var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
-var response_ip;
-$.ajax({
-  url: queryURL_IP,
-  method: "GET",
-}).then(function (response) {
+//       console.log('SongKick: ' + response);
+//     })
+//   });
+// };
 
-  console.log("user's ip")
-  console.log(response.ip)
-  response_ip = response.ip;
+// This wasn't in a function, and it almost looks like a duplicate, so I put it in it's own function
+// function displayOtherEvents () {
+// var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+// var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+// var response_ip;
+// $.ajax({
+//   url: queryURL_IP,
+//   method: "GET",
+// }).then(function (response) {
 
-  //SONGKICK NEARBY EVENT LOOKUP
-  var apikey_localEvents = "926QLoynaFfTnoup"
-  var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-  $.ajax({
-    url: queryURL_localEvents,
-    method: "GET",
-  }).then(function (response) {
+//   response_ip = response.ip;
+//   console.log("User IP: " + response_ip)
+//   console.log(response);
 
-    console.log("local upcoming events");
-    console.log(response.resultsPage.results.location[0].metroArea.uri);
-  })
-  //SONGKICK SIMILAR ARTIST LOOKUP
-  var artist = "ARTIST GOES HERE";
-  var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
-  $.ajax({
-    url: queryURL_artistEvents,
-    method: "GET",
-  }).then(function (response) {
+//   //SONGKICK NEARBY EVENT LOOKUP
+//   var apikey_localEvents = "926QLoynaFfTnoup"
+//   var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+//   $.ajax({
+//     url: queryURL_localEvents,
+//     method: "GET",
+//   }).then(function (response) {
+//     console.log(response);
+//     var upcomingEvents = response.resultsPage.results.location[0].metroArea.uri;
+//     console.log("local upcoming events: " + upcomingEvents);
+//   })
+// });
+// };
+// displayOtherEvents();
 
-    console.log("artist upcoming events");
-    console.log(response);
-  })
+// function artistLookup () {
+//   //SONGKICK SIMILAR ARTIST LOOKUP
+//   var artist = "John Mayer";
+//   var apikey_localEvents = "926QLoynaFfTnoup"
+//   var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
+//   $.ajax({
+//     url: queryURL_artistEvents,
+//     method: "GET",
+//   }).then(function (response) {
 
-});
+//     console.log("artist upcoming events");
+//     console.log(response);
+//   })
+// };
+// artistLookup();
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -125,17 +132,14 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-
-
 // The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
+// function onPlayerReady(event) {
+//   event.target.playVideo();
+// }
 
-
-function stopVideo() {
-  player.stopVideo();
-}
+// function stopVideo() {
+//   player.stopVideo();
+// }
 
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -197,7 +201,7 @@ function mainPage() {
 function contactTab () {
   hideAll();
   $('#contactPage').show();
-}
+};
 
 
 
@@ -232,8 +236,6 @@ $('#returnToMainPage').on('click', function () {
   mainPage();
 });
 
-
-
 //SPOTIFY Web Playback SDK
 
 // window.onSpotifyWebPlaybackSDKReady = () => {
@@ -264,8 +266,3 @@ $('#returnToMainPage').on('click', function () {
 
 //   // Connect to the player!
 //   player.connect();
-
-
-
-
-
