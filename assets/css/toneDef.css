@@ -30,3 +30,7 @@
 .albumData {
     width: 50%;
 }
+
+#musicVideoContainer {
+  text-align: center;
+}
