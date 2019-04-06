@@ -1,22 +1,22 @@
 //TRACK LOOKUP
-jQuery.ajaxPrefilter(function(options) {
+$.ajaxPrefilter(function(options) {
   if (options.crossDomain && jQuery.support.cors) {
       options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
   }
 });
 function displayLyrics () {
-  var artist = "daft punk";
-  var song = "around the world";
+  var artist = $("#artistDiv").html();
+  var song = $("#songDiv").html();
   var queryURL_lyrics = "https://private-anon-1e650a5c58-lyricsovh.apiary-proxy.com/v1/" + artist + "/" + song;
   $.ajax({
     url: queryURL_lyrics,
     method: "GET",
   }).then(function(response) {
-
-      console.log("lyrics")
-      console.log(response.lyrics)
-  })
+  var lyrics = response.lyrics;
+  $("#lyrics-div").html(lyrics);
+  });
 };
+displayLyrics();
 // IP LOOKUP
 function displayEvents () {
 var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
@@ -95,11 +95,11 @@ function displayYouTubeVideo() {
     // console.log(response);
 
     var firstVideoTitle = response.items[0].snippet.title;
-    // console.log(firstVideoTitle);
+    console.log(firstVideoTitle);
 
     var firstVideoId = response.items[0].id.videoId;
     $('#musicVideoThumbnail').attr('src', 'http://img.youtube.com/vi/' + firstVideoId + '/0.jpg');
-    // console.log(firstVideoId);
+    console.log(firstVideoId);
 
   });
 };
@@ -108,17 +108,18 @@ function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var cors = 'https://cors-anywhere.herokuapp.com/'
   var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
-  // console.log(searchTerm);
+  console.log(searchTerm);
   
   $.ajax({
     url: cors + queryURL,
     method: 'GET'
   }).then(function (response) {
-    // console.log(response);
+    console.log(response);
     // var results = response[2][0];
     // ^^^ Creates one line of info. Can add more at will by changing the [0] to [1], [2], etc.
   });
 };
+
 
 function displayNewsInfo() {
   var searchArtist = $('#searchInput').val().trim();
@@ -142,6 +143,7 @@ function mainPage() {
   $('#frontPage').show();
 };
 
+
 $('#submitButton').on('click', function () {
   event.preventDefault();
   displayYouTubeVideo();
@@ -150,4 +152,6 @@ $('#submitButton').on('click', function () {
 })
 
 //SPOTIFY Web Playback SDK
+
 const token = 'BQA6vXPezXcxre-w_iPU1ULuwLaTALDaolLtxtdh9APRk2MuWGdufrAS6zFBRDwuqrKiEoTAukVnWF5XDjYt7biSgWmQY_t4yu7WhmY4J0xKOb0XkUsz__DOv1k2xs1bm10ffz1Uy0DUfjnm3T1inyKIJHtMxQkyBIcfw89SOZ9T6zgkfY3CZrJf';
+
