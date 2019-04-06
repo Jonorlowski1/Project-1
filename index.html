@@ -20,7 +20,7 @@
   <div class="background bg-secondary">
 
     <div class="jumbotron jumbotron-fluid bg-dark" id="header">
-      <h1 class="display-1 text-center text-primary text-weight-bold">toneDef</h1>
+      <h1 id="returnToMainPage" class="display-1 text-center text-primary text-weight-bold">toneDef</h1>
       <h3 class="lead text-weight-bold text-primary text-center">Hear More. Know More.</h3>
     </div>
 
@@ -34,13 +34,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link text-primary" href="#">Photos</a>
+            <a class="nav-link text-primary" id="photosTab" href="#">Photos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-primary" href="#">Tour Dates</a>
+            <a class="nav-link text-primary" id="tourDatesTab" href="#">Tour Dates</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-primary" href="#">News</a>
+            <a class="nav-link text-primary" id="newsTab" href="#">News</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -51,7 +51,7 @@
     </nav>
 
 
-    <div class="container">
+    <div id="frontPage" class="container">
       <div class="row text-white text-center">
         <div class="col-12">
           <h1>Search Results</h1>
@@ -170,6 +170,10 @@
           <img id="musicVideoThumbnail">
           </div>
         </div>
+      </div>
+
+      <div id="newsPage" class="container">
+
       </div>
     </div>
   </div>
