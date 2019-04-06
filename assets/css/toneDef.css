@@ -19,6 +19,10 @@
     overflow: auto;
 }
 
+#front-page {
+    padding-bottom: 50%;
+}
+
 .navbar-header {
     margin: 0;
     margin-top: -33px;
@@ -33,4 +37,15 @@
 
 #musicVideoContainer {
   text-align: center;
+  margin-bottom: 10%;
+}
+
+#musicButtons {
+    padding: 0 25%;
+}
+
+.footer {
+    /* position: absolute; */
+    z-index: 99;
+    background-color: lightskyblue;
 }

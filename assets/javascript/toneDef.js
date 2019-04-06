@@ -42,7 +42,7 @@ $.ajax({
         console.log("songkick");
         console.log(response);
   })
-};
+});
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -96,12 +96,12 @@ function displayNewsInfo() {
 function newsTab() {
   $('#frontPage').hide();
   $('#newsPage').show();
-}
+};
 
 function mainPage() {
   $('#newsPage').hide();
   $('#frontPage').show();
-}
+};
 
 $('#submitButton').on('click', function () {
   event.preventDefault();
@@ -117,5 +117,4 @@ $('#newsTab').on('click', function () {
 
 $('#returnToMainPage').on('click', function () {
   mainPage();
-
 });
