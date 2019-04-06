@@ -35,17 +35,17 @@ function displayWikiInfo() {
   });
 };
 
-function displayNewsInfo() {
-  var searchArtist = $('#searchInput').val().trim();
-  var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
+// function displayNewsInfo() {
+//   var searchArtist = $('#searchInput').val().trim();
+//   var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
 
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).then(function (response) {
-    // console.log(response);
-  });
-};
+//   $.ajax({
+//     url: queryURL,
+//     method: 'GET'
+//   }).then(function (response) {
+//     // console.log(response);
+//   });
+// };
 
 function newsTab() {
   $('#frontPage').hide();
