@@ -132,11 +132,6 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-
-function stopVideo() {
-  player.stopVideo();
-}
-
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var cors = 'https://cors-anywhere.herokuapp.com/'
