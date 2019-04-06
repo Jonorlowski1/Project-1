@@ -11,6 +11,7 @@ $.ajax({
     dataType: "jsonp"
   }).then(function(response) {
     
+    console.log("tracks info")
     console.log(response)
 
   });
@@ -23,7 +24,20 @@ $.ajax({
   url: queryURL_IP,
   method: "GET",
 }).then(function(response) {
-  console.log(response.ip)
-  response_ip = response.ip;
+
+    console.log("user's ip")
+    console.log(response.ip)
+    response_ip = response.ip;
+  
+    //SONGKICK EVENT LOOKUP
+    var apikey_localEvents = "926QLoynaFfTnoup"
+    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+    $.ajax({
+        url: queryURL_localEvents,
+        method: "GET",
+    }).then(function(response) {
+        
+        console.log("songkick");
+        console.log(response);
+  })
 });
-console.log(response_ip);
