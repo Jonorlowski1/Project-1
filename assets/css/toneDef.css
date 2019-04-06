@@ -1,4 +1,5 @@
 * {
+
     font-family: 'Roboto', sans-serif;
 }
 
@@ -30,3 +31,6 @@
     width: 50%;
 }
 
+#musicVideoContainer {
+  text-align: center;
+}
