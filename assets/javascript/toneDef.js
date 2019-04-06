@@ -166,15 +166,39 @@ function displayWikiInfo() {
 //   });
 // };
 
-function newsTab() {
+function hideAll() {
   $('#frontPage').hide();
+  $('#newsPage').hide();
+  $('#photosPage').hide();
+  $('#tourPage').hide();
+  $('#contactPage').hide();
+}
+
+function newsTab() {
+  hideAll();
   $('#newsPage').show();
 };
 
+function photosTab() {
+  hideAll();
+  $('#photosPage').show();
+}
+
+function tourTab() {
+  hideAll();
+  $('#tourPage').show();
+}
+
 function mainPage() {
-  $('#newsPage').hide();
+  hideAll();
   $('#frontPage').show();
 };
+
+function contactTab () {
+  hideAll();
+  $('#contactPage').show();
+}
+
 
 
 $('#submitButton').on('click', function () {
@@ -182,7 +206,33 @@ $('#submitButton').on('click', function () {
   displayYouTubeVideo();
   displayWikiInfo();
 
-})
+});
+
+$('#newsTab').on('click', function () {
+  newsTab();
+});
+
+$('#homeTab').on('click', function() {
+  mainPage();
+});
+
+$('#photosTab').on('click', function () {
+  photosTab();
+});
+
+$('#tourDatesTab').on('click', function() {
+  tourTab();
+});
+
+$('#contactTab').on('click', function () {
+  contactTab();
+});
+
+$('#returnToMainPage').on('click', function () {
+  mainPage();
+});
+
+
 
 //SPOTIFY Web Playback SDK
 
@@ -216,13 +266,6 @@ $('#submitButton').on('click', function () {
 //   player.connect();
 
 
-$('#newsTab').on('click', function () {
-  newsTab();
-});
 
-$('#returnToMainPage').on('click', function () {
-  mainPage();
-
-});
 
 
