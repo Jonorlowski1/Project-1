@@ -19,6 +19,32 @@ function displayLyrics () {
 };
 // IP LOOKUP
 function displayEvents () {
+var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+var response_ip;
+$.ajax({
+  url: queryURL_IP,
+  method: "GET",
+}).then(function(response) {
+
+    console.log("user's ip")
+    console.log(response.ip)
+    response_ip = response.ip;
+  
+    //SONGKICK EVENT LOOKUP
+    var apikey_localEvents = "926QLoynaFfTnoup"
+    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+    $.ajax({
+        url: queryURL_localEvents,
+        method: "GET",
+    }).then(function(response) {
+        
+        console.log("songkick");
+        console.log(response);
+  })
+});
+};
+
   var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
   var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
   var response_ip;
@@ -55,6 +81,7 @@ function displayEvents () {
       })
           
 });
+
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -108,12 +135,12 @@ function displayNewsInfo() {
 function newsTab() {
   $('#frontPage').hide();
   $('#newsPage').show();
-}
+};
 
 function mainPage() {
   $('#newsPage').hide();
   $('#frontPage').show();
-}
+};
 
 $('#submitButton').on('click', function () {
   event.preventDefault();
@@ -159,6 +186,8 @@ $('#newsTab').on('click', function () {
 
 $('#returnToMainPage').on('click', function () {
   mainPage();
+
+});
 
 
   // Connect to the player!
