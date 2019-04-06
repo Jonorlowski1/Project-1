@@ -149,7 +149,7 @@ $('#submitButton').on('click', function () {
   displayYouTubeVideo();
   displayWikiInfo();
 
-})}
+})
 
 //SPOTIFY Web Playback SDK
 
