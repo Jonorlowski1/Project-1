@@ -12,6 +12,18 @@ body, html {
     margin: 0;
 }
 
+h1 {
+    color: #eeeeee;
+    text-align: center;
+    font-size: 56px;
+}
+
+h2 {
+    font-size: 40px;
+    text-decoration: underline;
+    text-align: center;
+}
+
 #header {
     border-bottom: #007BFF solid thick;
 }
@@ -43,6 +55,15 @@ body, html {
 #musicVideoContainer {
   text-align: center;
   margin-bottom: 10%;
+}
+
+.wikiResults {
+    font-family: 'Copse', serif;
+    font-size: 28px;
+}
+
+#results3 {
+    padding-bottom: 5%;
 }
 
 #musicButtons {
