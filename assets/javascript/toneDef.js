@@ -126,12 +126,10 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 
-
 // The API will call this function when the video player is ready.
 function onPlayerReady(event) {
   event.target.playVideo();
 }
-
 
 function stopVideo() {
   player.stopVideo();
@@ -199,10 +197,12 @@ function contactTab () {
   $('#contactPage').show();
 }
 
-
+var newMusicVideo = $('<img>').attr('id', 'musicVideoPlayer');
 
 $('#submitButton').on('click', function () {
   event.preventDefault();
+  $('#musicVideoContainer').empty();
+  $('#musicVideoContainer').append(newMusicVideo);
   displayYouTubeVideo();
   displayWikiInfo();
 
@@ -231,8 +231,6 @@ $('#contactTab').on('click', function () {
 $('#returnToMainPage').on('click', function () {
   mainPage();
 });
-
-
 
 //SPOTIFY Web Playback SDK
 
@@ -264,8 +262,3 @@ $('#returnToMainPage').on('click', function () {
 
 //   // Connect to the player!
 //   player.connect();
-
-
-
-
-
