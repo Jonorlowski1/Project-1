@@ -39,18 +39,18 @@ $.ajax({
         method: "GET",
     }).then(function(response) {
         
-        console.log("songkick local");
+        console.log("local upcoming events");
         console.log(response.resultsPage.results.location[0].metroArea.uri);        
     })
     //SONGKICK SIMILAR ARTIST LOOKUP
-    var artist = "The Beatles";
+    var artist = "Ben Folds";
     var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
     $.ajax({
         url: queryURL_artistEvents,
         method: "GET",
     }).then(function(response) {
         
-        console.log("songkick artist");
+        console.log("artist upcoming events");
         console.log(response);
     })
         
