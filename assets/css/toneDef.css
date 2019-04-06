@@ -3,7 +3,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.body, html {
+body {
+    background-color: #8d8d8def;
+}
+
+body, html {
     height: 100%;
     margin: 0;
 }
