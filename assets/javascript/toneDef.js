@@ -132,6 +132,11 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+// The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var cors = 'https://cors-anywhere.herokuapp.com/'
@@ -142,9 +147,16 @@ function displayWikiInfo() {
     url: cors + queryURL,
     method: 'GET'
   }).then(function (response) {
-    console.log(response);
-    // var results = response[2][0];
-    // ^^^ Creates one line of info. Can add more at will by changing the [0] to [1], [2], etc.
+    console.log('WIKIPEDIA' + response);
+    var artistName = response[1][0];
+    var results1 = response[2][0];
+    var results2 = response[2][1];
+    var results3 = response[2][2];
+
+    $('#artistName').text(artistName);
+    $('#results1').text(results1);
+    $('#results2').text(results2);
+    $('#results3').text(results3);
   });
 };
 
