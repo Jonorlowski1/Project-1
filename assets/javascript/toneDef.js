@@ -1,87 +1,86 @@
 //TRACK LOOKUP
-$.ajaxPrefilter(function(options) {
+$.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
-      options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
   }
 });
-function displayLyrics () {
+function displayLyrics() {
   var artist = $("#artistDiv").html();
   var song = $("#songDiv").html();
   var queryURL_lyrics = "https://private-anon-1e650a5c58-lyricsovh.apiary-proxy.com/v1/" + artist + "/" + song;
   $.ajax({
     url: queryURL_lyrics,
     method: "GET",
-  }).then(function(response) {
-  var lyrics = response.lyrics;
-  $("#lyrics-div").html(lyrics);
+  }).then(function (response) {
+    var lyrics = response.lyrics;
+    $("#lyrics-div").html(lyrics);
   });
 };
 displayLyrics();
 // IP LOOKUP
-function displayEvents () {
-var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
-var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
-var response_ip;
-$.ajax({
-  url: queryURL_IP,
-  method: "GET",
-}).then(function(response) {
-
-    console.log("user's ip")
-    console.log(response.ip)
-    response_ip = response.ip;
-  
-    //SONGKICK EVENT LOOKUP
-    var apikey_localEvents = "926QLoynaFfTnoup"
-    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-    $.ajax({
-        url: queryURL_localEvents,
-        method: "GET",
-    }).then(function(response) {
-        
-        console.log("songkick");
-        console.log(response);
-  })
-});
-};
-
+function displayEvents() {
   var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
   var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
   var response_ip;
   $.ajax({
     url: queryURL_IP,
     method: "GET",
-  }).then(function(response) {
+  }).then(function (response) {
 
-      console.log("user's ip")
-      console.log(response.ip)
-      response_ip = response.ip;
-    
-      //SONGKICK NEARBY EVENT LOOKUP
-      var apikey_localEvents = "926QLoynaFfTnoup"
-      var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-      $.ajax({
-          url: queryURL_localEvents,
-          method: "GET",
-      }).then(function(response) {
-          
-          console.log("local upcoming events");
-          console.log(response.resultsPage.results.location[0].metroArea.uri);        
-      })
-      //SONGKICK SIMILAR ARTIST LOOKUP
-      var artist = "ARTIST GOES HERE";
-      var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
-      $.ajax({
-          url: queryURL_artistEvents,
-          method: "GET",
-      }).then(function(response) {
-          
-          console.log("artist upcoming events");
-          console.log(response);
-      })
-          
+    console.log("user's ip")
+    console.log(response.ip)
+    response_ip = response.ip;
+
+    //SONGKICK EVENT LOOKUP
+    var apikey_localEvents = "926QLoynaFfTnoup"
+    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+    $.ajax({
+      url: queryURL_localEvents,
+      method: "GET",
+    }).then(function (response) {
+
+      console.log("songkick");
+      console.log(response);
+    })
+  });
+};
+
+var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+var response_ip;
+$.ajax({
+  url: queryURL_IP,
+  method: "GET",
+}).then(function (response) {
+
+  console.log("user's ip")
+  console.log(response.ip)
+  response_ip = response.ip;
+
+  //SONGKICK NEARBY EVENT LOOKUP
+  var apikey_localEvents = "926QLoynaFfTnoup"
+  var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+  $.ajax({
+    url: queryURL_localEvents,
+    method: "GET",
+  }).then(function (response) {
+
+    console.log("local upcoming events");
+    console.log(response.resultsPage.results.location[0].metroArea.uri);
+  })
+  //SONGKICK SIMILAR ARTIST LOOKUP
+  var artist = "ARTIST GOES HERE";
+  var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
+  $.ajax({
+    url: queryURL_artistEvents,
+    method: "GET",
+  }).then(function (response) {
+
+    console.log("artist upcoming events");
+    console.log(response);
+  })
+
 });
-
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -96,20 +95,70 @@ function displayYouTubeVideo() {
 
     var firstVideoTitle = response.items[0].snippet.title;
     console.log(firstVideoTitle);
+    
+    firstVideoId = response.items[0].id.videoId;
+    console.log('Video ID: ' + firstVideoId);
+    // $('#musicVideoThumbnail').attr('src', 'http://img.youtube.com/vi/' + firstVideoId + '/0.jpg');
+    // var player;
 
-    var firstVideoId = response.items[0].id.videoId;
-    $('#musicVideoThumbnail').attr('src', 'http://img.youtube.com/vi/' + firstVideoId + '/0.jpg');
-    console.log(firstVideoId);
-
+    // This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    function onYouTubeIframeAPIReady(firstVideoId) {
+      player = new YT.Player('musicVideoPlayer', {
+        height: '200',
+        width: '200',
+        videoId: firstVideoId,
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    onYouTubeIframeAPIReady(firstVideoId);
   });
 };
+
+// ====================================
+// YOUTUBE EMBED MUSIC VIDEO TRIAL CODE from https://developers.google.com/youtube/iframe_api_reference
+// ====================================
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+
+// The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(stopVideo, 6000);
+    done = true;
+  }
+}
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+
+
+
 
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var cors = 'https://cors-anywhere.herokuapp.com/'
   var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
   console.log(searchTerm);
-  
+
   $.ajax({
     url: cors + queryURL,
     method: 'GET'
