@@ -19,6 +19,32 @@ function displayLyrics () {
 displayLyrics();
 // IP LOOKUP
 function displayEvents () {
+var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+var response_ip;
+$.ajax({
+  url: queryURL_IP,
+  method: "GET",
+}).then(function(response) {
+
+    console.log("user's ip")
+    console.log(response.ip)
+    response_ip = response.ip;
+  
+    //SONGKICK EVENT LOOKUP
+    var apikey_localEvents = "926QLoynaFfTnoup"
+    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+    $.ajax({
+        url: queryURL_localEvents,
+        method: "GET",
+    }).then(function(response) {
+        
+        console.log("songkick");
+        console.log(response);
+  })
+});
+};
+
   var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
   var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
   var response_ip;
@@ -55,6 +81,7 @@ function displayEvents () {
       })
           
 });
+
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -93,6 +120,30 @@ function displayWikiInfo() {
   });
 };
 
+
+function displayNewsInfo() {
+  var searchArtist = $('#searchInput').val().trim();
+  var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
+
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).then(function (response) {
+    // console.log(response);
+  });
+};
+
+function newsTab() {
+  $('#frontPage').hide();
+  $('#newsPage').show();
+};
+
+function mainPage() {
+  $('#newsPage').hide();
+  $('#frontPage').show();
+};
+
+
 $('#submitButton').on('click', function () {
   event.preventDefault();
   displayYouTubeVideo();
@@ -101,6 +152,7 @@ $('#submitButton').on('click', function () {
 })}
 
 //SPOTIFY Web Playback SDK
+
 // window.onSpotifyWebPlaybackSDKReady = () => {
 //   const token = 'BQA6vXPezXcxre-w_iPU1ULuwLaTALDaolLtxtdh9APRk2MuWGdufrAS6zFBRDwuqrKiEoTAukVnWF5XDjYt7biSgWmQY_t4yu7WhmY4J0xKOb0XkUsz__DOv1k2xs1bm10ffz1Uy0DUfjnm3T1inyKIJHtMxQkyBIcfw89SOZ9T6zgkfY3CZrJf';
 //   const player = new Spotify.Player({
@@ -129,4 +181,15 @@ $('#submitButton').on('click', function () {
 
 //   // Connect to the player!
 //   player.connect();
-// };
+
+
+$('#newsTab').on('click', function () {
+  newsTab();
+});
+
+$('#returnToMainPage').on('click', function () {
+  mainPage();
+
+});
+
+

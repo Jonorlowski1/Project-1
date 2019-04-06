@@ -3,7 +3,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.body, html {
+body {
+    background-color: #8d8d8def;
+}
+
+body, html {
     height: 100%;
     margin: 0;
 }
@@ -19,9 +23,14 @@
     overflow: auto;
 }
 
+#front-page {
+    padding-bottom: 50%;
+}
+
 .navbar-header {
     margin: 0;
     margin-top: -33px;
+    border-bottom: #007BFF solid thick;
 }
 
 .songHeader,
@@ -33,4 +42,15 @@
 
 #musicVideoContainer {
   text-align: center;
+  margin-bottom: 10%;
+}
+
+#musicButtons {
+    padding: 0 25%;
+}
+
+.footer {
+    /* position: absolute; */
+    z-index: 99;
+    background-color: lightskyblue;
 }
