@@ -1,9 +1,9 @@
 //TRACK LOOKUP
-$.ajaxPrefilter(function (options) {
-  if (options.crossDomain && jQuery.support.cors) {
-    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-  }
-});
+// $.ajaxPrefilter(function (options) {
+//   if (options.crossDomain && jQuery.support.cors) {
+//     options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+//   }
+// });
 function displayLyrics() {
   var artist = $("#artistDiv").html();
   var song = $("#songDiv").html();
@@ -94,23 +94,21 @@ function displayYouTubeVideo() {
     // console.log(response);
 
     var firstVideoTitle = response.items[0].snippet.title;
-    console.log(firstVideoTitle);
+    console.log('Video Title: ' + firstVideoTitle);
     
     firstVideoId = response.items[0].id.videoId;
     console.log('Video ID: ' + firstVideoId);
-    // $('#musicVideoThumbnail').attr('src', 'http://img.youtube.com/vi/' + firstVideoId + '/0.jpg');
-    // var player;
 
     // This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
     function onYouTubeIframeAPIReady(firstVideoId) {
       player = new YT.Player('musicVideoPlayer', {
-        height: '200',
-        width: '200',
+        height: '240',
+        width: '380',
         videoId: firstVideoId,
         events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
+          // 'onReady': onPlayerReady,
+          // 'onStateChange': onPlayerStateChange
         }
       });
     }
@@ -134,24 +132,10 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-// The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
-  }
-}
 
 function stopVideo() {
   player.stopVideo();
 }
-
-
-
-
 
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -170,17 +154,17 @@ function displayWikiInfo() {
 };
 
 
-function displayNewsInfo() {
-  var searchArtist = $('#searchInput').val().trim();
-  var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
+// function displayNewsInfo() {
+//   var searchArtist = $('#searchInput').val().trim();
+//   var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
 
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).then(function (response) {
-    // console.log(response);
-  });
-};
+//   $.ajax({
+//     url: queryURL,
+//     method: 'GET'
+//   }).then(function (response) {
+//     // console.log(response);
+//   });
+// };
 
 function newsTab() {
   $('#frontPage').hide();
