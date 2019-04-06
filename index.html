@@ -18,95 +18,96 @@
 </head>
 
 <body>
-  
-    <div class="jumbotron jumbotron-fluid bg-dark" id="header">
-      <h1 id="returnToMainPage" class="display-1 text-center text-primary text-weight-bold">toneDef</h1>
-      <h3 class="lead text-weight-bold text-primary text-center">Hear More. Know More.</h3>
+
+  <div class="jumbotron jumbotron-fluid bg-dark" id="header">
+    <h1 id="returnToMainPage" class="display-1 text-center text-primary text-weight-bold">toneDef</h1>
+    <h3 class="lead text-weight-bold text-primary text-center">Hear More. Know More.</h3>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-header">
+
+    <a class="navbar-brand text-primary" href="#">More Info</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link text-primary" id="photosTab" href="#">Photos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-primary" id="tourDatesTab" href="#">Tour Dates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-primary" id="newsTab" href="#">News</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" id="submitButton" type="submit">Search</button>
+      </form>
     </div>
+  </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-header">
 
-      <a class="navbar-brand text-primary" href="#">More Info</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link text-primary" id="photosTab" href="#">Photos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" id="tourDatesTab" href="#">Tour Dates</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" id="newsTab" href="#">News</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" id="submitButton" type="submit">Search</button>
-        </form>
+  <div id="frontPage" class="container wrap">
+    <div class="row text-white text-center">
+      <div class="col-12">
+        <h1>Search Results</h1>
       </div>
-    </nav>
+    </div>
+    <!--results header row ends here-->
 
+    <div class="row">
+      <div class="col-12">
 
-    <div id="frontPage" class="container wrap">
-      <div class="row text-white text-center">
-        <div class="col-12">
-          <h1>Search Results</h1>
-        </div>
-      </div>
-      <!--results header row ends here-->
+        <table class="table table-striped table-bordered text-center">
+          <thead class="thead font-weight-bold bg-primary text-white">
+            <tr>
+              <th class="songHeader">Songs</th>
+              <th class="songHeader">Artist</th>
+            </tr>
+          </thead>
+          <tbody class="text-white">
+            <tr>
+              <td class="albumData" id="songDiv">Around the world</td>
+              <td class="albumData" id="artistDiv">Daft Punk</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <table class="table table-striped table-bordered text-center">
+          <thead class="thead font-weight-bold bg-primary text-white">
+            <tr>
+              <th class="albumHeader">Albums</th>
+              <th class="albumHeader">Artist</th>
 
-      <div class="row">
-        <div class="col-12">
+            </tr>
+          </thead>
+          <tbody class="text-white">
+            <tr>
+              <td class="albumData" id="albumDiv">Homework</td>
+              <td class="albumData" class="artist">Daft Punk</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <table class="table table-striped table-bordered text-center">
+          <thead class="thead font-weight-bold bg-primary text-white">
+            <tr>
+              <th scope="col" colspan="4">Artists</th>
+            </tr>
+          </thead>
+          <tbody class="text-white">
+            <tr>
+              <td colspan="2">The Beatles</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
 
-          <table class="table table-striped table-bordered text-center">
-            <thead class="thead font-weight-bold bg-primary text-white">
-              <tr>
-                <th class="songHeader">Songs</th>
-                <th class="songHeader">Artist</th>
-              </tr>
-            </thead>
-            <tbody class="text-white">
-              <tr>
-                <td class="albumData" id="songDiv">Around the world</td>
-                <td class="albumData" id="artistDiv">Daft Punk</td>              </tr>
-            </tbody>
-          </table>
-          <br>
-          <table class="table table-striped table-bordered text-center">
-            <thead class="thead font-weight-bold bg-primary text-white">
-              <tr>
-                <th class="albumHeader">Albums</th>
-                <th class="albumHeader">Artist</th>
-
-              </tr>
-            </thead>
-            <tbody class="text-white">
-              <tr>
-                <td class="albumData" id="albumDiv">Homework</td>
-                <td class="albumData" class="artist">Daft Punk</td>
-              </tr>
-            </tbody>
-          </table>
-          <br>
-          <table class="table table-striped table-bordered text-center">
-            <thead class="thead font-weight-bold bg-primary text-white">
-              <tr>
-                <th scope="col" colspan="4">Artists</th>
-              </tr>
-            </thead>
-            <tbody class="text-white">
-              <tr>
-                <td colspan="2">The Beatles</td>
-              </tr>
-            </tbody>
-          </table>
-          <br>
-
-          <!-- <table class="table table-striped table-bordered text-center">
+        <!-- <table class="table table-striped table-bordered text-center">
             <thead class="thead font-weight-bold bg-primary text-white">
               <tr>
                 <th scope="col" colspan="4">Songs</th>
@@ -121,79 +122,77 @@
             </tbody>
           </table> -->
 
-          <div class="col-4 offset-4 text-center text-white">
-            <h1>Lyrics</h1>
-          </div>
-        </div>
-
-        <div class="col-12 text-center bg-white" id="lyrics-div">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nihil, cum fuga sed, neque quisquam possimus
-          quidem, rem saepe voluptatibus quam? Libero accusamus sed perferendis ut iste, quam sit atque.
-
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates animi et neque id cumque amet. Ipsam
-          praesentium nulla vitae! Saepe deserunt, libero esse ex labore eveniet corporis? Rerum, ex unde.
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ratione harum recusandae repellendus,
-          culpa, autem ab in impedit et natus minus tempora suscipit! Nulla molestias consectetur sunt cumque optio
-          porro.
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet accusamus quis, dolores adipisci ipsum ea
-          ratione explicabo tenetur! Illo asperiores animi adipisci quam ipsum delectus facere nostrum accusantium
-          laudantium omnis?
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit facilis perferendis dolorem nobis dicta
-          recusandae minus rerum. Optio fugit praesentium, magnam reiciendis quos provident corrupti vero in,
-          perferendis ipsum dolorum?
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, excepturi nemo, distinctio non mollitia labore
-          aliquam deserunt ad hic ab impedit accusantium rerum nostrum voluptatem perferendis, quibusdam tenetur. Ipsa,
-          pariatur.
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas possimus, minus velit laborum unde est
-          vitae harum consectetur quidem voluptatem ut necessitatibus praesentium vero impedit itaque magnam odit
-          accusantium.
-
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis inventore saepe, iste atque sed labore odit
-          quibusdam alias maxime qui, veritatis eum, illo natus praesentium tenetur expedita cum aut dolore.
-        </div>
-      </div>
-      <br>
-      <div class="row">
         <div class="col-4 offset-4 text-center text-white">
-          <h1>Music Video</h1>
+          <h1>Lyrics</h1>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-8 offset-2" id="musicVideoContainer">
-          <img id="musicVideoThumbnail">
-        </div>
+      <div class="col-12 text-center bg-white" id="lyrics-div">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nihil, cum fuga sed, neque quisquam possimus
+        quidem, rem saepe voluptatibus quam? Libero accusamus sed perferendis ut iste, quam sit atque.
+
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates animi et neque id cumque amet. Ipsam
+        praesentium nulla vitae! Saepe deserunt, libero esse ex labore eveniet corporis? Rerum, ex unde.
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ratione harum recusandae repellendus,
+        culpa, autem ab in impedit et natus minus tempora suscipit! Nulla molestias consectetur sunt cumque optio
+        porro.
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet accusamus quis, dolores adipisci ipsum ea
+        ratione explicabo tenetur! Illo asperiores animi adipisci quam ipsum delectus facere nostrum accusantium
+        laudantium omnis?
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit facilis perferendis dolorem nobis dicta
+        recusandae minus rerum. Optio fugit praesentium, magnam reiciendis quos provident corrupti vero in,
+        perferendis ipsum dolorum?
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, excepturi nemo, distinctio non mollitia labore
+        aliquam deserunt ad hic ab impedit accusantium rerum nostrum voluptatem perferendis, quibusdam tenetur. Ipsa,
+        pariatur.
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas possimus, minus velit laborum unde est
+        vitae harum consectetur quidem voluptatem ut necessitatibus praesentium vero impedit itaque magnam odit
+        accusantium.
+
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis inventore saepe, iste atque sed labore odit
+        quibusdam alias maxime qui, veritatis eum, illo natus praesentium tenetur expedita cum aut dolore.
       </div>
-      <!--row ends here-->
     </div>
-<<<<<<< HEAD
-
-    <footer class="footer navbar navbar-default fixed-bottom">
-      <div id="musicButtons" class="container">
-        <i class="fa fa-fast-backward" style="font-size:36px;"></i>
-        <i class="fa fa-play" style="font-size:36px;"></i>
-        <i class="fa fa-pause" style="font-size:36px;"></i>
-        <i class="fa fa-fast-forward" style="font-size:36px;"></i>
+    <br>
+    <div class="row">
+      <div class="col-4 offset-4 text-center text-white">
+        <h1>Music Video</h1>
       </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8 offset-2" id="musicVideoContainer">
+        <img id="musicVideoThumbnail">
+      </div>
+    </div>
+    <!--row ends here-->
+  </div>
+  <<<<<<< HEAD <footer class="footer navbar navbar-default fixed-bottom">
+    <div id="musicButtons" class="container">
+      <i class="fa fa-fast-backward" style="font-size:36px;"></i>
+      <i class="fa fa-play" style="font-size:36px;"></i>
+      <i class="fa fa-pause" style="font-size:36px;"></i>
+      <i class="fa fa-fast-forward" style="font-size:36px;"></i>
+    </div>
     </footer>
 
     <div id="newsPage" class="container">
     </div>
 
-  </div>
-=======
+    </div>
+    =======
     <!--container ends here-->
->>>>>>> dbdfbfbc03ae4661e42b9875a73c0c52288eec66
-  </div>
-  <!--background ends here-->
+    >>>>>>> dbdfbfbc03ae4661e42b9875a73c0c52288eec66
+    </div>
+    <!--background ends here-->
 
-  </div>
-  <script src="./assets/javascript/toneDef.js"></script>
+    </div>
+    <script src="./assets/javascript/toneDef.js"></script>
 </body>
 
 </html>
