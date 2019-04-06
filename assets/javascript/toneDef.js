@@ -12,6 +12,7 @@ function displayLyrics() {
     url: queryURL_lyrics,
     method: "GET",
   }).then(function (response) {
+    console.log(response.body);
     var lyrics = response.lyrics;
     $("#lyrics-div").html(lyrics);
   });
