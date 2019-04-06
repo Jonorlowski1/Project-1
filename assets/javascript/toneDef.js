@@ -31,7 +31,7 @@ $.ajax({
     console.log(response.ip)
     response_ip = response.ip;
   
-    //SONGKICK EVENT LOOKUP
+    //SONGKICK NEARBY EVENT LOOKUP
     var apikey_localEvents = "926QLoynaFfTnoup"
     var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
     $.ajax({
@@ -39,10 +39,22 @@ $.ajax({
         method: "GET",
     }).then(function(response) {
         
-        console.log("songkick");
+        console.log("songkick local");
+        console.log(response.resultsPage.results.location[0].metroArea.uri);        
+    })
+    //SONGKICK SIMILAR ARTIST LOOKUP
+    var artist = "The Beatles";
+    var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
+    $.ajax({
+        url: queryURL_artistEvents,
+        method: "GET",
+    }).then(function(response) {
+        
+        console.log("songkick artist");
         console.log(response);
-  })
-};
+    })
+        
+});
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -84,6 +96,6 @@ function displayWikiInfo() {
 $('#submitButton').on('click', function () {
   event.preventDefault();
   displayYouTubeVideo();
-   displayWikiInfo();
+  displayWikiInfo();
 
-});
+})}
