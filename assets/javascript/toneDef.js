@@ -43,6 +43,7 @@ $.ajax({
         console.log(response);
   })
 });
+};
 
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
