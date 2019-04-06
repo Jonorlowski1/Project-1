@@ -137,7 +137,6 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var cors = 'https://cors-anywhere.herokuapp.com/'
@@ -207,10 +206,12 @@ function contactTab () {
   $('#contactPage').show();
 };
 
-
+var newMusicVideo = $('<img>').attr('id', 'musicVideoPlayer');
 
 $('#submitButton').on('click', function () {
   event.preventDefault();
+  $('#musicVideoContainer').empty();
+  $('#musicVideoContainer').append(newMusicVideo);
   displayYouTubeVideo();
   displayWikiInfo();
 
