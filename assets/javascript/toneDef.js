@@ -12,6 +12,7 @@ function displayLyrics() {
     url: queryURL_lyrics,
     method: "GET",
   }).then(function (response) {
+    console.log(response.body);
     var lyrics = response.lyrics;
     $("#lyrics-div").html(lyrics);
   });
@@ -131,6 +132,7 @@ var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 
 // The API will call this function when the video player is ready.
 function onPlayerReady(event) {
