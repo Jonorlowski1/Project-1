@@ -133,21 +133,52 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-function displayWikiInfo() {
+
+// The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// function displayWikiInfo() {
+//   var searchTerm = $('#searchInput').val().trim();
+//   var cors = 'https://cors-anywhere.herokuapp.com/'
+//   var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
+//   console.log(searchTerm);
+
+//   $.ajax({
+//     url: cors + queryURL,
+//     method: 'GET'
+//   }).then(function (response) {
+//     console.log('WIKIPEDIA' + response);
+//     var artistName = response[1][0];
+//     var results1 = response[2][0];
+//     var results2 = response[2][1];
+//     var results3 = response[2][2];
+
+//     $('#artistName').text(artistName);
+//     $('#results1').text(results1);
+//     $('#results2').text(results2);
+//     $('#results3').text(results3);
+//   });
+// };
+
+function displayLastFmInfo() {
   var searchTerm = $('#searchInput').val().trim();
-  var cors = 'https://cors-anywhere.herokuapp.com/'
-  var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
-  console.log(searchTerm);
+  var queryURL = 'http://ws.audioscrobbler.com/2.0/?api_key=8479819dada681d1b1ca61c575bdb802&method=artist.getinfo&artist=' + searchTerm + '&format=json'
 
   $.ajax({
-    url: cors + queryURL,
+    url: queryURL,
     method: 'GET'
   }).then(function (response) {
-    console.log(response);
-    // var results = response[2][0];
-    // ^^^ Creates one line of info. Can add more at will by changing the [0] to [1], [2], etc.
+    console.log('LastFM: ' + response.artist.name);
+    var artistName = JSON.stringify(response.artist.name);
+    var results1 = JSON.stringify(response.artist.bio.summary);
+
+    $('#artistName').text(artistName);
+    $('#results1').text(results1);
   });
-};
+
+}
 
 
 // function displayNewsInfo() {
@@ -202,7 +233,8 @@ $('#submitButton').on('click', function () {
   $('#musicVideoContainer').empty();
   $('#musicVideoContainer').append(newMusicVideo);
   displayYouTubeVideo();
-  displayWikiInfo();
+  // displayWikiInfo();
+  displayLastFmInfo();
 
 });
 
