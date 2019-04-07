@@ -172,8 +172,7 @@ function displayLastFmInfo() {
   }).then(function (response) {
     console.log('LastFM: ' + response.artist.name);
     var artistName = JSON.stringify(response.artist.name);
-    var results1 = JSON.stringify(response.artist.bio.summary);
-
+    var results1 = JSON.parse(JSON.stringify(response.artist.bio.summary));
     $('#artistName').text(artistName);
     $('#results1').text(results1);
   });
