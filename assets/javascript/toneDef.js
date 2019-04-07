@@ -262,33 +262,72 @@ $('#returnToMainPage').on('click', function () {
   mainPage();
 });
 
-//SPOTIFY Web Playback SDK
+// SPOTIFY Web Playback SDK
 
-// window.onSpotifyWebPlaybackSDKReady = () => {
-//   const token = 'BQA6vXPezXcxre-w_iPU1ULuwLaTALDaolLtxtdh9APRk2MuWGdufrAS6zFBRDwuqrKiEoTAukVnWF5XDjYt7biSgWmQY_t4yu7WhmY4J0xKOb0XkUsz__DOv1k2xs1bm10ffz1Uy0DUfjnm3T1inyKIJHtMxQkyBIcfw89SOZ9T6zgkfY3CZrJf';
-//   const player = new Spotify.Player({
-//     name: 'Web Playback SDK Quick Start Player',
-//     getOAuthToken: cb => { cb(token); }
-//   });
+window.onSpotifyWebPlaybackSDKReady = () => {
+	const play = ({
+    spotify_uri,
+    playerInstance: {
+      _options: {
+        getOAuthToken,
+        id
+      }
+    }
+  }) => {
+    getOAuthToken(access_token => {
+      fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ uris: [spotify_uri] }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${access_token}`
+        },
+      });
+    });
+  };
+  
+  play({
+    playerInstance: new Spotify.Player({ name: "..." }),
+    spotify_uri: 'spotify:track:7xGfFoTpQ2E7fRF5lN10tr',
+  });
 
-//   // Error handling
-//   player.addListener('initialization_error', ({ message }) => { console.error(message); });
-//   player.addListener('authentication_error', ({ message }) => { console.error(message); });
-//   player.addListener('account_error', ({ message }) => { console.error(message); });
-//   player.addListener('playback_error', ({ message }) => { console.error(message); });
+  var player = new Spotify.Player({
+    name: 'Carly Rae Jepsen Player',
+    getOAuthToken: callback => {
+      // Run code to get a fresh access token
+  
+      callback('access token here');
+    },
+    volume: 0.5
+  });
 
-//   // Playback status updates
-//   player.addListener('player_state_changed', state => { console.log(state); });
+  player.connect().then(success => {
+    if (success) {
+      console.log('The Web Playback SDK successfully connected to Spotify!');
+    }
+  })
+  	
+  player.addListener('ready', ({ device_id }) => {
+    console.log('The Web Playback SDK is ready to play music!');
+    console.log('Device ID', device_id);
+  })
 
-//   // Ready
-//   player.addListener('ready', ({ device_id }) => {
-//     console.log('Ready with Device ID', device_id);
-//   });
+  player.getCurrentState().then(state => {
+    if (!state) {
+      console.error('User is not playing music through the Web Playback SDK');
+      return;
+    }
+  
+    let {
+      current_track,
+      next_tracks: [next_track]
+    } = state.track_window;
+  
+    console.log('Currently Playing', current_track);
+    console.log('Playing Next', next_track);
+  });
 
-//   // Not Ready
-//   player.addListener('not_ready', ({ device_id }) => {
-//     console.log('Device ID has gone offline', device_id);
-//   });
-
-//   // Connect to the player!
-//   player.connect();
+  player.setName("My New Player Name").then(() => {
+    console.log('Player name updated!');
+  });
+};
