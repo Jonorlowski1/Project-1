@@ -24,8 +24,13 @@ h2 {
     text-align: center;
 }
 
+.songHeader {
+    color: #000000;
+    background-color: #93D3FB;
+}
+
 #header {
-    border-bottom: #007BFF solid thick;
+    border-bottom: #93D3FB solid thick;
 }
 
 #lyrics-div {
@@ -42,7 +47,17 @@ h2 {
 .navbar-header {
     margin: 0;
     margin-top: -33px;
-    border-bottom: #007BFF solid thick;
+    border-bottom: #93D3FB solid thick;
+}
+
+.nav-link,
+.display-1,
+.lead {
+    color: #93D3FB;
+}
+
+#submitButton {
+    border:#93D3FB solid thin;
 }
 
 .songHeader,
@@ -73,5 +88,5 @@ h2 {
 .footer {
     /* position: absolute; */
     z-index: 99;
-    background-color: lightskyblue;
+    background-color: #93D3FB;
 }
