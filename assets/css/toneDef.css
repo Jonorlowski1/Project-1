@@ -33,6 +33,7 @@ h2 {
     width: 100%;
     border: #007BFF solid thick;
     overflow: auto;
+    font-size: calc(100% + 0.6vw);
 }
 
 #front-page {
