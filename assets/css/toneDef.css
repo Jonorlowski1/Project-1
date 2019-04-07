@@ -15,7 +15,7 @@ body, html {
 h1 {
     color: #eeeeee;
     text-align: center;
-    font-size: 56px;
+    font-size: calc(150% + 2.5vw);
 }
 
 h2 {
@@ -34,6 +34,9 @@ h2 {
     border: #007BFF solid thick;
     overflow: auto;
     font-size: calc(100% + 0.6vw);
+    text-align: center;
+    background-color: #eeeeee;
+    padding: 0;
 }
 
 #front-page {
