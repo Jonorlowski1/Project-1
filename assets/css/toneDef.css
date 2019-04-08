@@ -87,10 +87,17 @@ h2 {
 
 #musicButtons {
     padding: 0 25%;
+    text-align: center;
+}
+
+.fa {
+    font-size: calc(100% + 0.9vw);
+
 }
 
 .footer {
     /* position: absolute; */
     z-index: 99;
+    max-width: 100%;
     background-color: #93D3FB;
 }
