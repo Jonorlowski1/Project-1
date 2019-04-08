@@ -13,7 +13,7 @@ body, html {
 }
 
 h1 {
-    color: #eeeeee;
+    color: #000000;
     text-align: center;
     font-size: calc(150% + 2.5vw);
 }
@@ -22,11 +22,6 @@ h2 {
     font-size: 40px;
     text-decoration: underline;
     text-align: center;
-}
-
-.songHeader {
-    color: #000000;
-    background-color: #93D3FB;
 }
 
 #header {
@@ -65,10 +60,23 @@ h2 {
 }
 
 .songHeader,
-.songData,
 .albumHeader,
 .albumData {
     width: 50%;
+}
+
+.albumData,
+.artistData,
+.songData {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.songHeader,
+.albumHeader,
+.artistHeader {
+    color: #000000;
+    background-color: #93D3FB;
 }
 
 #musicVideoContainer {
@@ -92,12 +100,11 @@ h2 {
 
 .fa {
     font-size: calc(100% + 0.9vw);
-
 }
 
 .footer {
     /* position: absolute; */
     z-index: 99;
     max-width: 100%;
-    background-color: #93D3FB;
+    background-color: #3898FF;
 }
