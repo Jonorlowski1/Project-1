@@ -21,7 +21,7 @@
 <body>
 
   <div class="jumbotron jumbotron-fluid bg-dark" id="header">
-    <h1 id="returnToMainPage" class="display-1 text-center text-weight-bold">toneDef</h1>
+    <h1 id="returnToMainPage" class="text-center text-weight-bold">toneDef</h1>
     <h3 class="lead text-weight-bold text-center">Hear More. Know More.</h3>
   </div>
 
@@ -75,9 +75,9 @@
             </tr>
           </thead>
           <tbody class="text-white">
-            <tr>
-              <td class="albumData" id="songDiv">Around the world</td>
-              <td class="albumData" id="artistDiv">Daft Punk</td>
+            <tr id="tableRow">
+              <td class="songData">Around the world</td>
+              <td class="songData">Daft Punk</td>
             </tr>
           </tbody>
         </table>
@@ -92,8 +92,8 @@
           </thead>
           <tbody class="text-white">
             <tr>
-              <td class="albumData" id="albumDiv">Homework</td>
-              <td class="albumData" class="artist">Daft Punk</td>
+              <td class="albumData">Homework</td>
+              <td class="albumData" class="artistData">Daft Punk</td>
             </tr>
           </tbody>
         </table>
@@ -101,12 +101,12 @@
         <table class="table table-striped table-bordered text-center">
           <thead class="thead font-weight-bold bg-primary text-white">
             <tr>
-              <th scope="col" colspan="4">Artists</th>
+              <th class="artistHeader">Artists</th>
             </tr>
           </thead>
           <tbody class="text-white">
             <tr>
-              <td colspan="2">Daft Punk</td>
+              <td class="artistData">Daft Punk</td>
             </tr>
           </tbody>
         </table>
@@ -145,7 +145,7 @@
 
     <!-- MUSIC VIDEO DISPLAY -->
     <div class="row">
-      <div class="col-8" id="musicVideoContainer">
+      <div class="col-12" id="musicVideoContainer">
         <img id="musicVideoPlayer">
 
       </div>
@@ -215,10 +215,10 @@
   <!--contactPage div end-->
   <footer class="footer navbar navbar-default fixed-bottom">
     <div id="musicButtons" class="container">
-      <i class="fa fa-fast-backward" style="font-size:36px;"></i>
-      <i class="fa fa-play" style="font-size:36px;"></i>
-      <i class="fa fa-pause" style="font-size:36px;"></i>
-      <i class="fa fa-fast-forward" style="font-size:36px;"></i>
+      <i class="fa fa-fast-backward"></i>
+      <i class="fa fa-play"></i>
+      <i class="fa fa-pause"></i>
+      <i class="fa fa-fast-forward"></i>
     </div>
   </footer>
 

@@ -13,9 +13,15 @@ body, html {
 }
 
 h1 {
-    color: #eeeeee;
+    color: #000000;
     text-align: center;
     font-size: calc(150% + 2.5vw);
+    text-shadow:
+    -1px -1px 0 #FF9900,
+    1px -1px 0 #FF9900,
+    -1px 1px 0 #FF9900,
+    1px 1px 0 #FF9900;
+    color: #000000;  
 }
 
 h2 {
@@ -24,13 +30,8 @@ h2 {
     text-align: center;
 }
 
-.songHeader {
-    color: #000000;
-    background-color: #93D3FB;
-}
-
 #header {
-    border-bottom: #93D3FB solid thick;
+    border-bottom: #FF9900 solid thick;
 }
 
 #lyrics-div {
@@ -51,7 +52,7 @@ h2 {
 .navbar-header {
     margin: 0;
     margin-top: -33px;
-    border-bottom: #93D3FB solid thick;
+    border-bottom: #FF9900 solid thick;
 }
 
 .nav-link,
@@ -65,10 +66,23 @@ h2 {
 }
 
 .songHeader,
-.songData,
 .albumHeader,
 .albumData {
     width: 50%;
+}
+
+.albumData,
+.artistData,
+.songData {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.songHeader,
+.albumHeader,
+.artistHeader {
+    color: #000000;
+    background-color: #93D3FB;
 }
 
 #musicVideoContainer {
@@ -87,10 +101,17 @@ h2 {
 
 #musicButtons {
     padding: 0 25%;
+    text-align: center;
+}
+
+.fa {
+    font-size: calc(100% + 0.9vw);
 }
 
 .footer {
-    /* position: absolute; */
     z-index: 99;
-    background-color: #93D3FB;
+    max-width: 100%;
+    /* Colorizing used from https://cssgradient.io/ */
+    background: rgb(255,153,0);
+    background: radial-gradient(circle, rgba(255,153,0,1) 49%, rgba(0,0,0,1) 100%);
 }
