@@ -91,6 +91,14 @@ h2 {
   margin-bottom: 10%;
 }
 
+#photosPage {
+    text-align: center;
+}
+
+.artist-photo {
+    margin: 7%;
+}
+
 .wikiResults {
     font-family: 'Copse', serif;
     font-size: 28px;
@@ -115,4 +123,23 @@ h2 {
     /* Colorizing used from https://cssgradient.io/ */
     background: rgb(255,153,0);
     background: radial-gradient(circle, rgba(255,153,0,1) 49%, rgba(0,0,0,1) 100%);
+}
+
+@media only screen and (min-width: 992px){
+    .artist-photo {
+        margin-bottom: 10%;
+    }
+    #bottom-margin-photos {
+        margin-bottom: 5%;
+    }
+}
+
+@media only screen and (min-width: 480px){
+    #bottom-margin-photos {
+        margin-bottom: 10%;
+    }
+    .artist-photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
