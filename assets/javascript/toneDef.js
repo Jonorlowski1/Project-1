@@ -47,7 +47,7 @@ function displayPhotos() {
 
   })
 };
-// displayPhotos();
+displayPhotos();
 
 // IP LOOKUP
 function displayEvents() {
@@ -75,7 +75,6 @@ function displayEvents() {
   });
 };
 
-// This wasn't in a function, and it almost looks like a duplicate, so I put it in it's own function
 function displayOtherEvents () {
 var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
 var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
@@ -169,29 +168,6 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-// function displayWikiInfo() {
-//   var searchTerm = $('#searchInput').val().trim();
-//   var cors = 'https://cors-anywhere.herokuapp.com/'
-//   var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
-//   console.log(searchTerm);
-
-//   $.ajax({
-//     url: cors + queryURL,
-//     method: 'GET'
-//   }).then(function (response) {
-//     console.log('WIKIPEDIA' + response);
-//     var artistName = response[1][0];
-//     var results1 = response[2][0];
-//     var results2 = response[2][1];
-//     var results3 = response[2][2];
-
-//     $('#artistName').text(artistName);
-//     $('#results1').text(results1);
-//     $('#results2').text(results2);
-//     $('#results3').text(results3);
-//   });
-// };
-
 function displayLastFmInfo() {
   var searchTerm = $('#searchInput').val().trim();
   var queryURL = 'http://ws.audioscrobbler.com/2.0/?api_key=8479819dada681d1b1ca61c575bdb802&method=artist.getinfo&artist=' + searchTerm + '&format=json'
@@ -208,20 +184,6 @@ function displayLastFmInfo() {
   });
 
 }
-
-
-// function displayNewsInfo() {
-//   var searchArtist = $('#searchInput').val().trim();
-//   var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
-
-//   $.ajax({
-//     url: queryURL,
-//     method: 'GET'
-//   }).then(function (response) {
-//     // console.log(response);
-//   });
-// };
-
 
 function newsTab() {
   hideAll();
@@ -256,9 +218,8 @@ $('#submitButton').on('click', function () {
   $('#musicVideoContainer').empty();
   $('#musicVideoContainer').append(newMusicVideo);
   displayYouTubeVideo();
-  // displayWikiInfo();
   displayLastFmInfo();
-  // $('#musicVideo').show();
+  $('#musicVideo').show();
 
 });
 
