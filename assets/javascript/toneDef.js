@@ -5,91 +5,93 @@
 //     options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
 //   }
 // });
-// function displayLyrics() {
-//   var artist = $("#artistDiv").html();
-//   var song = $("#songDiv").html();
-//   var queryURL_lyrics = "https://private-anon-1e650a5c58-lyricsovh.apiary-proxy.com/v1/" + artist + "/" + song;
-//   $.ajax({
-//     url: queryURL_lyrics,
-//     method: "GET",
-//   }).then(function (response) {
-//     console.log(response.body);
-//     var lyrics = response.lyrics;
-//     $("#lyrics-div").html(lyrics);
-//   });
-// };
-// displayLyrics();
 
-// // IP LOOKUP
-// function displayEvents() {
-//   var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
-//   var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
-//   var response_ip;
-//   $.ajax({
-//     url: queryURL_IP,
-//     method: "GET",
-//   }).then(function (response) {
+function displayLyrics() {
+  var artist = $("#artistDiv").html();
+  var song = $("#songDiv").html();
+  var queryURL_lyrics = "https://private-anon-1e650a5c58-lyricsovh.apiary-proxy.com/v1/" + artist + "/" + song;
+  $.ajax({
+    url: queryURL_lyrics,
+    method: "GET",
+  }).then(function (response) {
+    // console.log(response.body);
+    var lyrics = response.lyrics;
+    $("#lyrics-div").html(lyrics);
+  });
+};
+displayLyrics();
 
-//     response_ip = response.ip;
-//     console.log('User IP: ' + response_ip);
+// IP LOOKUP
+function displayEvents() {
+  var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+  var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+  // var response_ip;
+  $.ajax({
+    url: queryURL_IP,
+    method: "GET",
+  }).then(function (response) {
 
-//     //SONGKICK EVENT LOOKUP
-//     var apikey_localEvents = "926QLoynaFfTnoup"
-//     var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-//     $.ajax({
-//       url: queryURL_localEvents,
-//       method: "GET",
-//     }).then(function (response) {
+    var response_ip = response.ip;
+    console.log('displayEvents * User IP: ' + response_ip);
 
-//       console.log('SongKick: ' + response);
-//     })
-//   });
-// };
+    //SONGKICK EVENT LOOKUP
+    var apikey_localEvents = "926QLoynaFfTnoup"
+    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+    $.ajax({
+      url: queryURL_localEvents,
+      method: "GET",
+    }).then(function (response) {
+
+      console.log('SongKick: ' + response);
+    })
+  });
+};
 
 // This wasn't in a function, and it almost looks like a duplicate, so I put it in it's own function
-// function displayOtherEvents () {
-// var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
-// var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
-// var response_ip;
-// $.ajax({
-//   url: queryURL_IP,
-//   method: "GET",
-// }).then(function (response) {
+function displayOtherEvents () {
+var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+var response_ip;
+$.ajax({
+  url: queryURL_IP,
+  method: "GET",
+}).then(function (response) {
 
-//   response_ip = response.ip;
-//   console.log("User IP: " + response_ip)
-//   console.log(response);
+  response_ip = response.ip;
+  console.log("displayOtherEvents * User IP: " + response_ip)
+  console.log(response);
 
-//   //SONGKICK NEARBY EVENT LOOKUP
-//   var apikey_localEvents = "926QLoynaFfTnoup"
-//   var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-//   $.ajax({
-//     url: queryURL_localEvents,
-//     method: "GET",
-//   }).then(function (response) {
-//     console.log(response);
-//     var upcomingEvents = response.resultsPage.results.location[0].metroArea.uri;
-//     console.log("local upcoming events: " + upcomingEvents);
-//   })
-// });
-// };
-// displayOtherEvents();
+  //SONGKICK NEARBY EVENT LOOKUP
+  var apikey_localEvents = "926QLoynaFfTnoup"
+  var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+  $.ajax({
+    url: queryURL_localEvents,
+    method: "GET",
+    // dataType: JSON
+  }).then(function (response) {
+    console.log('Event Lookup Response: ' + response);
+    var upcomingEvents = response.resultsPage.results.location[0].metroArea.uri;
+    // var jsonUpcomingEvents = JSON.parse(upcomingEvents);
+    console.log("Local Upcoming Events: " + upcomingEvents);
+  })
+});
+};
+displayOtherEvents();
 
-// function artistLookup () {
-//   //SONGKICK SIMILAR ARTIST LOOKUP
-//   var artist = "John Mayer";
-//   var apikey_localEvents = "926QLoynaFfTnoup"
-//   var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
-//   $.ajax({
-//     url: queryURL_artistEvents,
-//     method: "GET",
-//   }).then(function (response) {
+function artistLookup () {
+  //SONGKICK SIMILAR ARTIST LOOKUP
+  var artist = "John Mayer";
+  var apikey_localEvents = "926QLoynaFfTnoup"
+  var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
+  $.ajax({
+    url: queryURL_artistEvents,
+    method: "GET",
+  }).then(function (response) {
 
-//     console.log("artist upcoming events");
-//     console.log(response);
-//   })
-// };
-// artistLookup();
+    console.log("artistLookup * " + response);
+  })
+};
+artistLookup();
 
 // function displayYouTubeVideo() {
 //   var searchTerm = $('#searchInput').val().trim();
@@ -102,28 +104,29 @@
 //   }).then(function (response) {
 //     // console.log(response);
 
-//     var firstVideoTitle = response.items[0].snippet.title;
-//     console.log('Video Title: ' + firstVideoTitle);
-    
-//     firstVideoId = response.items[0].id.videoId;
-//     console.log('Video ID: ' + firstVideoId);
 
-//     // This function creates an <iframe> (and YouTube player)
-//     //    after the API code downloads.
-//     function onYouTubeIframeAPIReady(firstVideoId) {
-//       player = new YT.Player('musicVideoPlayer', {
-//         height: '240',
-//         width: '380',
-//         videoId: firstVideoId,
-//         events: {
-//           // 'onReady': onPlayerReady,
-//           // 'onStateChange': onPlayerStateChange
-//         }
-//       });
-//     }
-//     onYouTubeIframeAPIReady(firstVideoId);
-//   });
-// };
+    var firstVideoTitle = response.items[0].snippet.title;
+    // console.log('Video Title: ' + firstVideoTitle);
+    
+    firstVideoId = response.items[0].id.videoId;
+    // console.log('Video ID: ' + firstVideoId);
+
+    // This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    function onYouTubeIframeAPIReady(firstVideoId) {
+      player = new YT.Player('musicVideoPlayer', {
+        height: '240',
+        width: '380',
+        videoId: firstVideoId,
+        events: {
+          // 'onReady': onPlayerReady,
+          // 'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    onYouTubeIframeAPIReady(firstVideoId);
+  });
+};
 
 // ====================================
 // YOUTUBE EMBED MUSIC VIDEO TRIAL CODE from https://developers.google.com/youtube/iframe_api_reference
@@ -167,44 +170,89 @@
 //   var searchTerm = $('#searchInput').val().trim();
 //   var queryURL = 'http://ws.audioscrobbler.com/2.0/?api_key=8479819dada681d1b1ca61c575bdb802&method=artist.getinfo&artist=' + searchTerm + '&format=json'
 
-//   $.ajax({
-//     url: queryURL,
-//     method: 'GET'
-//   }).then(function (response) {
-//     console.log('LastFM: ' + response.artist.name);
-//     var artistName = JSON.stringify(response.artist.name);
-//     var results1 = JSON.parse(JSON.stringify(response.artist.bio.summary));
-//     $('#artistName').text(artistName);
-//     $('#results1').text(results1);
-//   });
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).then(function (response) {
+    // console.log('LastFM: ' + response.artist.name);
+    var artistName = JSON.stringify(response.artist.name);
+    var results1 = JSON.parse(JSON.stringify(response.artist.bio.summary));
+    $('#artistName').text(artistName);
+    $('#results1').text(results1);
+  });
+
 
 // }
 
 
-// function displayNewsInfo() {
-//   var searchArtist = $('#searchInput').val().trim();
-//   var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
+function hideAll() {
+  $('#frontPage').hide();
+  $('#newsPage').hide();
+  $('#photosPage').hide();
+  $('#tourPage').hide();
+  $('#contactPage').hide();
+}
 
-//   $.ajax({
-//     url: queryURL,
-//     method: 'GET'
-//   }).then(function (response) {
-//     // console.log(response);
-//   });
-// };
+function newsTab() {
+  hideAll();
+  $('#newsPage').show();
+};
 
-// function hideAll() {
-//   $('#frontPage').hide();
-//   $('#newsPage').hide();
-//   $('#photosPage').hide();
-//   $('#tourPage').hide();
-//   $('#contactPage').hide();
-// }
+function photosTab() {
+  hideAll();
+  $('#photosPage').show();
+}
 
-// function newsTab() {
-//   hideAll();
-//   $('#newsPage').show();
-// };
+function tourTab() {
+  hideAll();
+  $('#tourPage').show();
+}
+
+function mainPage() {
+  hideAll();
+  $('#frontPage').show();
+};
+
+function contactTab () {
+  hideAll();
+  $('#contactPage').show();
+};
+
+var newMusicVideo = $('<img>').attr('id', 'musicVideoPlayer');
+
+$('#submitButton').on('click', function () {
+  event.preventDefault();
+  $('#musicVideoContainer').empty();
+  $('#musicVideoContainer').append(newMusicVideo);
+  displayYouTubeVideo();
+  // displayWikiInfo();
+  displayLastFmInfo();
+
+});
+
+$('#newsTab').on('click', function () {
+  newsTab();
+});
+
+$('#homeTab').on('click', function() {
+  mainPage();
+});
+
+$('#photosTab').on('click', function () {
+  photosTab();
+});
+
+$('#tourDatesTab').on('click', function() {
+  tourTab();
+});
+
+$('#contactTab').on('click', function () {
+  contactTab();
+});
+
+$('#returnToMainPage').on('click', function () {
+  mainPage();
+});
 
 // function photosTab() {
 //   hideAll();
