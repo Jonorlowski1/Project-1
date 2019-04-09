@@ -104,6 +104,10 @@ $.ajax({
     var upcomingEvents = response.resultsPage.results.location[0].metroArea.uri;
     console.log("local upcoming events: " + upcomingEvents);
 
+    var subHeader = $("<a class=tour-link href=" + upcomingEvents + ">Find out if " + $('#artistDiv').text() + " is on tour near you!</a>");
+    $('#localTourLink').append(subHeader);
+
+
   })
 });
 };
@@ -123,13 +127,15 @@ function artistLookup () {
     console.log(response);
 
     var artistName = response.resultsPage.results.artist[0].displayName;
-    var subHeader = $("<a class=tour-link href=" + tourLink + ">Find out if " + $('#artistDiv').text() + " is on tour near you!</a>");
-    var tourLink = response.resultsPage.results.artist[0].uri;
+    var subHeader = $("<a class=tour-link href=" + tourDate + ">Find out where " + $('#artistDiv').text() + " is currently touring by clicking here</a>");
+    var tourDate = response.resultsPage.results.artist[0].uri;
+    var onTour = response.resultsPage.results.artist[0].onTourUntil;
     
     $('#artistNameTour').text(artistName);
+    $('#tourDate').text('On Tour Until: ' + onTour);
     $('#tourLink').append(subHeader);
 
-    console.log('LINK TO TOUR INFO: '+tourLink);
+    console.log('LINK TO TOUR INFO: '+tourDate);
   })
 };
 artistLookup();
@@ -185,13 +191,7 @@ function onPlayerReady(event) {
 }
 
 function displayLastFmInfo() {
-  var searchTerm = $('#searchInput').val().trim();
-  var queryURL = 'http://ws.audioscrobbler.com/2.0/?api_key=8479819dada681d1b1ca61c575bdb802&method=artist.getinfo&artist=' + searchTerm + '&format=json'
-
-}
-
-function displayLastFmInfo() {
-  var searchTerm = $('#searchInput').val().trim();
+  var searchTerm = $('#artistDiv').html();
   var queryURL = 'http://ws.audioscrobbler.com/2.0/?api_key=8479819dada681d1b1ca61c575bdb802&method=artist.getinfo&artist=' + searchTerm + '&format=json'
 
   $.ajax({
@@ -204,9 +204,8 @@ function displayLastFmInfo() {
     $('#artistName').text(artistName);
     $('#results1').text(results1);
   });
-
-
 }
+displayLastFmInfo();
 
 function newsTab() {
   hideAll();
