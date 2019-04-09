@@ -111,7 +111,7 @@ displayOtherEvents();
 
 function artistLookup () {
   //SONGKICK SIMILAR ARTIST LOOKUP
-  var artist = "John Mayer";
+  var artist = $('#artistDiv').html();
   var apikey_localEvents = "926QLoynaFfTnoup"
   var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
   $.ajax({
@@ -122,6 +122,14 @@ function artistLookup () {
     console.log("Artist upcoming events:");
     console.log(response);
 
+    var artistName = response.resultsPage.results.artist[0].displayName;
+    var subHeader = $("<a class=tour-link href=" + tourLink + ">Find out if " + $('#artistDiv').text() + " is on tour near you!</a>");
+    var tourLink = response.resultsPage.results.artist[0].uri;
+    
+    $('#artistNameTour').text(artistName);
+    $('#tourLink').append(subHeader);
+
+    console.log('LINK TO TOUR INFO: '+tourLink);
   })
 };
 artistLookup();
@@ -199,7 +207,6 @@ function displayLastFmInfo() {
 
 
 }
-
 
 function newsTab() {
   hideAll();
