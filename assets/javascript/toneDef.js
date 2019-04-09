@@ -1,3 +1,19 @@
+function hideAll() {
+  $('#frontPage').hide();
+  $('#newsPage').hide();
+  $('#photosPage').hide();
+  $('#tourPage').hide();
+  $('#contactPage').hide();
+  $('#musicVideo').hide();
+};
+
+function pageLoad() {
+  hideAll();
+  $('#frontPage').show();
+}
+
+pageLoad();
+
 //TRACK LOOKUP
 // $.ajaxPrefilter(function (options) {
 //   if (options.crossDomain && jQuery.support.cors) {
@@ -18,6 +34,20 @@ function displayLyrics() {
   });
 };
 displayLyrics();
+
+function displayPhotos() {
+  // var artist = $('#artistDiv').html();
+  $.ajax ({
+    type: 'POST',
+    url: 'curl -H "Authorization: 563492ad6f91700001000001404ed7fc9dba4294b7d85af8737e84e5" "https://api.pexels.com/v1/search?query=people"',
+    dataType: 'json',
+    success: function(data) {
+      console.log('PHOTOS: ' + data);
+    }
+
+  })
+};
+// displayPhotos();
 
 // // IP LOOKUP
 // function displayEvents() {
@@ -192,13 +222,6 @@ function displayLastFmInfo() {
 //   });
 // };
 
-function hideAll() {
-  $('#frontPage').hide();
-  $('#newsPage').hide();
-  $('#photosPage').hide();
-  $('#tourPage').hide();
-  $('#contactPage').hide();
-}
 
 function newsTab() {
   hideAll();
@@ -208,17 +231,18 @@ function newsTab() {
 function photosTab() {
   hideAll();
   $('#photosPage').show();
-}
+};
 
 function tourTab() {
   hideAll();
   $('#tourPage').show();
-}
+};
 
 function mainPage() {
   hideAll();
   $('#frontPage').show();
-};
+  $('#musicVideo').show();
+}
 
 function contactTab () {
   hideAll();
@@ -234,6 +258,7 @@ $('#submitButton').on('click', function () {
   displayYouTubeVideo();
   // displayWikiInfo();
   displayLastFmInfo();
+  // $('#musicVideo').show();
 
 });
 
