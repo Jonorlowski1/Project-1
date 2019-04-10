@@ -12,11 +12,11 @@ $(document).on("ready", function () {
 });
 
 //TRACK LOOKUP
-$.ajaxPrefilter(function (options) {
-  if (options.crossDomain && jQuery.support.cors) {
-    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-  }
-});
+// $.ajaxPrefilter(function (options) {
+//   if (options.crossDomain && jQuery.support.cors) {
+//     options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+//   }
+// });
 function displayLyrics() {
   var artist = $("#artistDiv").html();
   var song = $("#songDiv").html();
@@ -108,14 +108,48 @@ function displayYouTubeVideo() {
     // console.log(response);
 
     var firstVideoTitle = response.items[0].snippet.title;
-    console.log(firstVideoTitle);
+    console.log('Video Title: ' + firstVideoTitle);
+    
+    firstVideoId = response.items[0].id.videoId;
+    console.log('Video ID: ' + firstVideoId);
 
-    var firstVideoId = response.items[0].id.videoId;
-    $('#musicVideoThumbnail').attr('src', 'http://img.youtube.com/vi/' + firstVideoId + '/0.jpg');
-    console.log(firstVideoId);
-
+    // This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    function onYouTubeIframeAPIReady(firstVideoId) {
+      player = new YT.Player('musicVideoPlayer', {
+        height: '240',
+        width: '380',
+        videoId: firstVideoId,
+        events: {
+          // 'onReady': onPlayerReady,
+          // 'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    onYouTubeIframeAPIReady(firstVideoId);
   });
 };
+
+// ====================================
+// YOUTUBE EMBED MUSIC VIDEO TRIAL CODE from https://developers.google.com/youtube/iframe_api_reference
+// ====================================
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+
+// The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+
+function stopVideo() {
+  player.stopVideo();
+}
 
 function displayWikiInfo() {
   var searchTerm = $('#searchInput').val().trim();
@@ -134,17 +168,17 @@ function displayWikiInfo() {
 };
 
 
-function displayNewsInfo() {
-  var searchArtist = $('#searchInput').val().trim();
-  var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
+// function displayNewsInfo() {
+//   var searchArtist = $('#searchInput').val().trim();
+//   var queryURL = 'https://newsapi.org/v2/everything?q=' + searchArtist + '&from=2019-03-06&sortBy=publishedAt&apiKey=ad64dfb3904d4063bbc4193ffff9173f'
 
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).then(function (response) {
-    // console.log(response);
-  });
-};
+//   $.ajax({
+//     url: queryURL,
+//     method: 'GET'
+//   }).then(function (response) {
+//     // console.log(response);
+//   });
+// };
 
 
 function newsTab() {
