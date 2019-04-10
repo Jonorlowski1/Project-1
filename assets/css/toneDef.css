@@ -1,10 +1,11 @@
 * {
 
     font-family: 'Roboto', sans-serif;
+    color: #96DDFF;
 }
 
 body {
-    background-color: #8d8d8def;
+    background-color: #343A40;
 }
 
 body, html {
@@ -12,15 +13,20 @@ body, html {
     margin: 0;
 }
 
+
 #header {
-    border-bottom: #007BFF solid thick;
+    border-bottom: #96DDFF solid thick;
 }
 
 #lyrics-div {
     height: 400px;
     width: 100%;
-    border: #007BFF solid thick;
+    border: solid thick  #96DDFF;
     overflow: auto;
+}
+
+.navbarBackground {
+    background-color: #96DDFF;
 }
 
 #front-page {
@@ -30,7 +36,7 @@ body, html {
 .navbar-header {
     margin: 0;
     margin-top: -33px;
-    border-bottom: #007BFF solid thick;
+    border-bottom:  solid thick  #96DDFF;
 }
 
 .songHeader,
@@ -40,6 +46,13 @@ body, html {
     width: 50%;
 }
 
+.songHeader,
+.albumHeader,
+.artistHeader {
+    background-color: #96DDFF;
+    color: #343A40;
+}
+
 #musicVideoContainer {
   text-align: center;
   margin-bottom: 10%;
@@ -47,10 +60,25 @@ body, html {
 
 #musicButtons {
     padding: 0 25%;
+    background-color: #343A40; 
 }
 
 .footer {
     /* position: absolute; */
     z-index: 99;
-    background-color: lightskyblue;
+    background-color: #96DDFF;
+    color: #343A40;
+}
+
+.transition {
+    background-color: #96DDFF;
+    height: 100vh;
+    margin-right: 1em;
+    z-index: 2;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(10,auto);
+
 }

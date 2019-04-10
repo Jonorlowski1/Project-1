@@ -1,85 +1,98 @@
+function hideAll() {
+  $('#frontPage').hide();
+  $('#newsPage').hide();
+  $('#photosPage').hide();
+  $('#tourPage').hide();
+  $('#contactPage').hide();
+}
+
+$(document).on("ready", function () {
+  hideAll();
+  $('#frontPage').show();
+});
+
 //TRACK LOOKUP
-$.ajaxPrefilter(function(options) {
+$.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
-      options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
   }
 });
-function displayLyrics () {
+function displayLyrics() {
   var artist = $("#artistDiv").html();
   var song = $("#songDiv").html();
   var queryURL_lyrics = "https://private-anon-1e650a5c58-lyricsovh.apiary-proxy.com/v1/" + artist + "/" + song;
   $.ajax({
     url: queryURL_lyrics,
     method: "GET",
-  }).then(function(response) {
-  var lyrics = response.lyrics;
-  $("#lyrics-div").html(lyrics);
+  }).then(function (response) {
+    var lyrics = response.lyrics;
+    $("#lyrics-div").html(lyrics);
   });
 };
 displayLyrics();
 // IP LOOKUP
-function displayEvents () {
-var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
-var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
-var response_ip;
-$.ajax({
-  url: queryURL_IP,
-  method: "GET",
-}).then(function(response) {
-
-    console.log("user's ip")
-    console.log(response.ip)
-    response_ip = response.ip;
-  
-    //SONGKICK EVENT LOOKUP
-    var apikey_localEvents = "926QLoynaFfTnoup"
-    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-    $.ajax({
-        url: queryURL_localEvents,
-        method: "GET",
-    }).then(function(response) {
-        
-        console.log("songkick");
-        console.log(response);
-  })
-});
-};
-
+function displayEvents() {
   var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
   var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
   var response_ip;
   $.ajax({
     url: queryURL_IP,
     method: "GET",
-  }).then(function(response) {
+  }).then(function (response) {
 
-      console.log("user's ip")
-      console.log(response.ip)
-      response_ip = response.ip;
-    
-      //SONGKICK NEARBY EVENT LOOKUP
-      var apikey_localEvents = "926QLoynaFfTnoup"
-      var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
-      $.ajax({
-          url: queryURL_localEvents,
-          method: "GET",
-      }).then(function(response) {
-          
-          console.log("local upcoming events");
-          console.log(response.resultsPage.results.location[0].metroArea.uri);        
-      })
-      //SONGKICK SIMILAR ARTIST LOOKUP
-      var artist = "ARTIST GOES HERE";
-      var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
-      $.ajax({
-          url: queryURL_artistEvents,
-          method: "GET",
-      }).then(function(response) {
-          
-          console.log("artist upcoming events");
-          console.log(response);
-      })
-          
+    console.log("user's ip")
+    console.log(response.ip)
+    response_ip = response.ip;
+
+    //SONGKICK EVENT LOOKUP
+    var apikey_localEvents = "926QLoynaFfTnoup"
+    var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+    $.ajax({
+      url: queryURL_localEvents,
+      method: "GET",
+    }).then(function (response) {
+
+      console.log("songkick");
+      console.log(response);
+    })
+  });
+};
+
+var apikey_IP = "7f3b94deee23a7b7e8c0d6d6355a33cf";
+var queryURL_IP = "http://api.ipstack.com/check?access_key=" + apikey_IP + "&output=json";
+var response_ip;
+$.ajax({
+  url: queryURL_IP,
+  method: "GET",
+}).then(function (response) {
+
+  console.log("user's ip")
+  console.log(response.ip)
+  response_ip = response.ip;
+
+  //SONGKICK NEARBY EVENT LOOKUP
+  var apikey_localEvents = "926QLoynaFfTnoup"
+  var queryURL_localEvents = "https://api.songkick.com/api/3.0/search/locations.json?location=ip:" + response_ip + "&apikey=" + apikey_localEvents;
+  $.ajax({
+    url: queryURL_localEvents,
+    method: "GET",
+  }).then(function (response) {
+
+    console.log("local upcoming events");
+    console.log(response.resultsPage.results.location[0].metroArea.uri);
+  })
+  //SONGKICK SIMILAR ARTIST LOOKUP
+  var artist = "ARTIST GOES HERE";
+  var queryURL_artistEvents = "https://api.songkick.com/api/3.0/search/artists.json?apikey=" + apikey_localEvents + "&query=" + artist;
+  $.ajax({
+    url: queryURL_artistEvents,
+    method: "GET",
+  }).then(function (response) {
+
+    console.log("artist upcoming events");
+    console.log(response);
+  })
+
 });
 
 
@@ -109,7 +122,7 @@ function displayWikiInfo() {
   var cors = 'https://cors-anywhere.herokuapp.com/'
   var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
   console.log(searchTerm);
-  
+
   $.ajax({
     url: cors + queryURL,
     method: 'GET'
@@ -133,13 +146,6 @@ function displayNewsInfo() {
   });
 };
 
-function hideAll() {
-  $('#frontPage').hide();
-  $('#newsPage').hide();
-  $('#photosPage').hide();
-  $('#tourPage').hide();
-  $('#contactPage').hide();
-}
 
 function newsTab() {
   hideAll();
@@ -161,7 +167,7 @@ function mainPage() {
   $('#frontPage').show();
 };
 
-function contactTab () {
+function contactTab() {
   hideAll();
   $('#contactPage').show();
 }
@@ -179,7 +185,13 @@ $('#newsTab').on('click', function () {
   newsTab();
 });
 
-$('#homeTab').on('click', function() {
+$('#homeTab').on('click', function () {
+  anime({
+    targets: 'section .transition',
+    translateY: 275,
+    direction: 'reverse',
+    delay: anime.stagger(100),
+  });
   mainPage();
 });
 
@@ -187,7 +199,7 @@ $('#photosTab').on('click', function () {
   photosTab();
 });
 
-$('#tourDatesTab').on('click', function() {
+$('#tourDatesTab').on('click', function () {
   tourTab();
 });
 
@@ -199,6 +211,51 @@ $('#returnToMainPage').on('click', function () {
   mainPage();
 });
 
+$(function () {
+  $('.jumbotron').css('opacity', 0);
+  $('.navbar').css('opacity', 0);
+  $('#frontPage').css('opacity', 0);
+  $('#photosPage').css('opacity', 0);
+  $('#tourPage').css('opacity', 0);
+  $('#newsPage').css('opacity', 0);
+  $('#contactPage').css('opacity', 0);
+  $('.footer').css('opacity', 0);
+
+  $('footer').hide();
+  let tl = anime.timeline({
+    easing: 'easeOutExpo',
+    duration: 1000,
+  })
+
+  tl.add({
+    targets: 'section .transition',
+    translateY: 1000,
+    direction: 'reverse',
+    delay: anime.stagger(100, { from: 'center' }),
+  })
+
+  tl.add({
+    targets: 'section .transition',
+    translateY: -1000,
+    delay: anime.stagger(100, {from: 'center'}),
+  })
+
+  tl.add({
+    targets: '.jumbotron',
+  })
+ 
+  tl.finished.then(function() {
+    $('section').hide();
+    $('.jumbotron').css('opacity', 1);
+    $('.navbar').css('opacity', 1);
+    $('#frontPage').css('opacity', 1);
+    $('#photosPage').css('opacity', 1);
+    $('#tourPage').css('opacity', 1);
+    $('#newsPage').css('opacity', 1);
+    $('#contactPage').css('opacity', 1);
+    $('.footer').css('opacity', 1);
+  });
+});
 
 
 //SPOTIFY Web Playback SDK
