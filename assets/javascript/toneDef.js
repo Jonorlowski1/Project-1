@@ -41,10 +41,10 @@ function displayPhotos() {
   // var artist = $('#artistDiv').html();
   $.ajax ({
     type: 'POST',
-    url: 'curl -H "Authorization: 563492ad6f91700001000001404ed7fc9dba4294b7d85af8737e84e5" "https://api.pexels.com/v1/search?query=people"',
-    dataType: 'json',
+    url: "https://pixabay.com/api/?key=12136917-3454c55361f2362ec84f8d1ef&q=yellow+flowers&image_type=photo&pretty=true",
+    // dataType: 'json',
     success: function(data) {
-      console.log('PHOTOS: ' + data);
+      console.log(data);
     }
 
   })
