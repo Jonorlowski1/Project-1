@@ -14,8 +14,26 @@ body, html {
 }
 
 
+h1 {
+    color: #000000;
+    text-align: center;
+    font-size: calc(150% + 2.5vw);
+    text-shadow:
+    -1px -1px 0 #FF9900,
+    1px -1px 0 #FF9900,
+    -1px 1px 0 #FF9900,
+    1px 1px 0 #FF9900;
+    color: #000000;  
+}
+
+h2 {
+    font-size: 40px;
+    text-decoration: underline;
+    text-align: center;
+}
+
 #header {
-    border-bottom: #96DDFF solid thick;
+    border-bottom: #FF9900 solid thick;
 }
 
 #lyrics-div {
@@ -23,6 +41,11 @@ body, html {
     width: 100%;
     border: solid thick  #96DDFF;
     overflow: auto;
+    font-size: calc(100% + 0.6vw);
+    text-align: center;
+    background-color: #eeeeee;
+    padding: 0;
+    margin-bottom: 5%;
 }
 
 .navbarBackground {
@@ -36,11 +59,21 @@ body, html {
 .navbar-header {
     margin: 0;
     margin-top: -33px;
-    border-bottom:  solid thick  #96DDFF;
+
+    border-bottom: #FF9900 solid thick;
+}
+
+.nav-link,
+.display-1,
+.lead {
+    color: #93D3FB;
+}
+
+#submitButton {
+    border:#93D3FB solid thin;
 }
 
 .songHeader,
-.songData,
 .albumHeader,
 .albumData {
     width: 50%;
@@ -54,18 +87,52 @@ body, html {
 }
 
 #musicVideoContainer {
+
+#musicVideoContainer,
+#tourPage {
   text-align: center;
   margin-bottom: 10%;
+}
+
+.tour-link {
+    color: #eeeeee;
+    font-size: calc(100% + 0.6vw);
+}
+
+#tourDate {
+    font-size: calc(100% + 0.3vw)
+};
+
+#photosPage {
+    text-align: center;
+}
+
+.artist-photo {
+    margin: 7%;
+}
+
+.wikiResults {
+    font-family: 'Copse', serif;
+    font-size: 28px;
+}
+
+#results3 {
+    padding-bottom: 5%;
 }
 
 #musicButtons {
     padding: 0 25%;
     background-color: #343A40; 
+    text-align: center;
+}
+
+.fa {
+    font-size: calc(100% + 0.9vw);
 }
 
 .footer {
-    /* position: absolute; */
     z-index: 99;
+
     background-color: #96DDFF;
     color: #343A40;
 }
@@ -80,5 +147,29 @@ body, html {
 section {
     display: grid;
     grid-template-columns: repeat(10,auto);
+  }
 
+    max-width: 100%;
+    /* Colorizing used from https://cssgradient.io/ */
+    background: rgb(255,153,0);
+    background: radial-gradient(circle, rgba(255,153,0,1) 49%, rgba(0,0,0,1) 100%);
 }
+
+@media only screen and (min-width: 992px){
+    .artist-photo {
+        margin-bottom: 10%;
+    }
+    #bottom-margin-photos {
+        margin-bottom: 5%;
+    }
+}
+
+@media only screen and (min-width: 480px){
+    #bottom-margin-photos {
+        margin-bottom: 10%;
+    }
+    .artist-photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
