@@ -43,6 +43,7 @@ h2 {
     text-align: center;
     background-color: #eeeeee;
     padding: 0;
+    margin-bottom: 5%;
 }
 
 #front-page {
@@ -85,10 +86,20 @@ h2 {
     background-color: #93D3FB;
 }
 
-#musicVideoContainer {
+#musicVideoContainer,
+#tourPage {
   text-align: center;
   margin-bottom: 10%;
 }
+
+.tour-link {
+    color: #eeeeee;
+    font-size: calc(100% + 0.6vw);
+}
+
+#tourDate {
+    font-size: calc(100% + 0.3vw)
+};
 
 #photosPage {
     text-align: center;
