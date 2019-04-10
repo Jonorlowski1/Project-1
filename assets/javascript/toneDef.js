@@ -37,19 +37,18 @@ function displayLyrics() {
 };
 displayLyrics();
 
-function displayPhotos() {
-  // var artist = $('#artistDiv').html();
-  $.ajax ({
-    type: 'POST',
-    url: 'curl -H "Authorization: 563492ad6f91700001000001404ed7fc9dba4294b7d85af8737e84e5" "https://api.pexels.com/v1/search?query=people"',
-    dataType: 'json',
-    success: function(data) {
-      console.log('PHOTOS: ' + data);
-    }
-
-  })
-};
-displayPhotos();
+// function displayPhotos() {
+//   // var artist = $('#artistDiv').html();
+//   $.ajax ({
+//     type: 'POST',
+//     url: 'https://pixabay.com/api/?key=12136917-3454c55361f2362ec84f8d1ef&q=John+Mayer&image_type=photo&pretty=true',
+//     // dataType: 'json',
+//     success: function(data) {
+//       console.log(data);
+//     }
+//   })
+// };
+// displayPhotos();
 
 // IP LOOKUP
 function displayEvents() {
@@ -150,7 +149,6 @@ function displayYouTubeVideo() {
     method: 'GET'
   }).then(function (response) {
     // console.log(response);
-
 
     var firstVideoTitle = response.items[0].snippet.title;
     console.log('Video Title: ' + firstVideoTitle);
@@ -323,6 +321,8 @@ $('#contactTab').on('click', function () {
 $('#returnToMainPage').on('click', function () {
   mainPage();
 });
+
+
 
 // //SPOTIFY Web Playback SDK
 
