@@ -4,6 +4,7 @@ function hideAll() {
   $('#photosPage').hide();
   $('#tourPage').hide();
   $('#contactPage').hide();
+
   $('#musicVideo').hide();
 };
 
@@ -11,9 +12,7 @@ function pageLoad() {
   hideAll();
   $('#frontPage').show();
 }
-
 pageLoad();
-
 
 //TRACK LOOKUP
 // $.ajaxPrefilter(function (options) {
@@ -140,6 +139,7 @@ function artistLookup () {
 };
 artistLookup();
 
+
 function displayYouTubeVideo() {
   var searchTerm = $('#searchInput').val().trim();
 
@@ -204,8 +204,10 @@ function displayLastFmInfo() {
     $('#artistName').text(artistName);
     $('#results1').text(results1);
   });
+
 }
 displayLastFmInfo();
+
 
 function newsTab() {
   hideAll();
@@ -228,7 +230,7 @@ function mainPage() {
   $('#musicVideo').show();
 }
 
-function contactTab () {
+function contactTab() {
   hideAll();
   $('#contactPage').show();
 };
@@ -249,7 +251,13 @@ $('#newsTab').on('click', function () {
   newsTab();
 });
 
-$('#homeTab').on('click', function() {
+$('#homeTab').on('click', function () {
+  anime({
+    targets: 'section .transition',
+    translateY: 275,
+    direction: 'reverse',
+    delay: anime.stagger(100),
+  });
   mainPage();
 });
 
@@ -257,7 +265,7 @@ $('#photosTab').on('click', function () {
   photosTab();
 });
 
-$('#tourDatesTab').on('click', function() {
+$('#tourDatesTab').on('click', function () {
   tourTab();
 });
 
@@ -269,10 +277,57 @@ $('#returnToMainPage').on('click', function () {
   mainPage();
 });
 
+$(function () {
+  $('.jumbotron').css('opacity', 0);
+  $('.navbar').css('opacity', 0);
+  $('#frontPage').css('opacity', 0);
+  $('#photosPage').css('opacity', 0);
+  $('#tourPage').css('opacity', 0);
+  $('#newsPage').css('opacity', 0);
+  $('#contactPage').css('opacity', 0);
+  $('.footer').css('opacity', 0);
+
+  $('footer').hide();
+  let tl = anime.timeline({
+    easing: 'easeOutExpo',
+    duration: 1000,
+  })
+
+  tl.add({
+    targets: 'section .transition',
+    translateY: 1000,
+    direction: 'reverse',
+    delay: anime.stagger(100, { from: 'center' }),
+  })
+
+  tl.add({
+    targets: 'section .transition',
+    translateY: -1000,
+    delay: anime.stagger(100, {from: 'center'}),
+  })
+
+  tl.add({
+    targets: '.jumbotron',
+  })
+ 
+  tl.finished.then(function() {
+    $('section').hide();
+    $('.jumbotron').css('opacity', 1);
+    $('.navbar').css('opacity', 1);
+    $('#frontPage').css('opacity', 1);
+    $('#photosPage').css('opacity', 1);
+    $('#tourPage').css('opacity', 1);
+    $('#newsPage').css('opacity', 1);
+    $('#contactPage').css('opacity', 1);
+    $('.footer').css('opacity', 1);
+  });
+});
+
 function photosTab() {
   hideAll();
   $('#photosPage').show();
 }
+
 
 function tourTab() {
   hideAll();

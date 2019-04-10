@@ -20,6 +20,23 @@
 </head>
 
 <body>
+
+<section>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+  <div class="transition"></div>
+</section>
+
+  <div class="jumbotron jumbotron-fluid bg-dark" id="header">
+    <h1 id="returnToMainPage" class="display-1 text-center text-weight-bold">toneDef</h1>
+
   <div class="container">
     <div id="login">
       <a href="/login" class="btn btn-primary margin-top=20px">Log in with Spotify</a>
@@ -34,12 +51,15 @@
   </div>
   <div class="jumbotron jumbotron-fluid bg-dark" id="header">
     <h1 id="returnToMainPage" class="text-center text-weight-bold">toneDef</h1>
+
     <h3 class="lead text-weight-bold text-center">Hear More. Know More.</h3>
   </div>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-header">
+  <nav class="navbar navbar-expand-lg navbar-light navbar-header navbarBackground">
 
-    <a class="navbar-brand" style="color: #93D3FB" id="homeTab" href="#">Home</a>
+
+    <a class="navbar-brand" id="homeTab" href="#">Home</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -47,21 +67,25 @@
     <div class="navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" style="color: #93D3FB" id="photosTab" href="#">Photos</a>
+
+          <a class="nav-link" id="photosTab" href="#">Photos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #93D3FB" id="tourDatesTab" href="#">Tour Dates</a>
+          <a class="nav-link" id="tourDatesTab" href="#">Tour Dates</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #93D3FB" id="newsTab" href="#">Artist Info</a>
+          <a class="nav-link" id="newsTab" href="#">Artist Info</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #93D3FB" id="contactTab" href="#">Contact</a>
+            <a class="nav-link" id="contactTab" href="#">Contact</a>
+
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn my-2 my-sm-0" style="color: #93D3FB" id="submitButton" type="submit">Search</button>
+
+        <button class="btn btn-outline-dark my-2 my-sm-0" id="submitButton" type="submit">Search</button>
+
       </form>
     </div>
   </nav>
@@ -80,7 +104,7 @@
       <div class="col-12">
 
         <table class="table table-striped table-bordered text-center">
-          <thead class="thead font-weight-bold bg-primary text-white">
+          <thead class="thead font-weight-bold text-dark">
             <tr>
               <th class="songHeader">Songs</th>
               <th class="songHeader">Artist</th>
@@ -96,7 +120,7 @@
         </table>
         <br>
         <table class="table table-striped table-bordered text-center">
-          <thead class="thead font-weight-bold bg-primary text-white">
+          <thead class="thead font-weight-bold text-dark">
             <tr>
               <th class="albumHeader">Albums</th>
               <th class="albumHeader">Artist</th>
@@ -112,7 +136,7 @@
         </table>
         <br>
         <table class="table table-striped table-bordered text-center">
-          <thead class="thead font-weight-bold bg-primary text-white">
+          <thead class="thead font-weight-bold text-dark">
             <tr>
               <th class="artistHeader">Artists</th>
             </tr>
@@ -146,7 +170,10 @@
         </div>
       </div>
 
+
+
       <div class="col-8 offset-2" id="lyrics-div"></div>
+
     </div>
   </div>
   <!--frontPage div end-->
@@ -299,6 +326,7 @@
   <!--background ends here-->
 
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
   <script src="./assets/javascript/toneDef.js"></script>
 </body>
 

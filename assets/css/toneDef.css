@@ -1,16 +1,18 @@
 * {
 
     font-family: 'Roboto', sans-serif;
+    color: #96DDFF;
 }
 
 body {
-    background-color: #8d8d8def;
+    background-color: #343A40;
 }
 
 body, html {
     height: 100%;
     margin: 0;
 }
+
 
 h1 {
     color: #000000;
@@ -37,13 +39,17 @@ h2 {
 #lyrics-div {
     height: 400px;
     width: 100%;
-    border: #007BFF solid thick;
+    border: solid thick  #96DDFF;
     overflow: auto;
     font-size: calc(100% + 0.6vw);
     text-align: center;
     background-color: #eeeeee;
     padding: 0;
     margin-bottom: 5%;
+}
+
+.navbarBackground {
+    background-color: #96DDFF;
 }
 
 #front-page {
@@ -53,6 +59,7 @@ h2 {
 .navbar-header {
     margin: 0;
     margin-top: -33px;
+
     border-bottom: #FF9900 solid thick;
 }
 
@@ -72,19 +79,14 @@ h2 {
     width: 50%;
 }
 
-.albumData,
-.artistData,
-.songData {
-    color: #000000;
-    background-color: #ffffff;
-}
-
 .songHeader,
 .albumHeader,
 .artistHeader {
-    color: #000000;
-    background-color: #93D3FB;
+    background-color: #96DDFF;
+    color: #343A40;
 }
+
+#musicVideoContainer {
 
 #musicVideoContainer,
 #tourPage {
@@ -120,6 +122,7 @@ h2 {
 
 #musicButtons {
     padding: 0 25%;
+    background-color: #343A40; 
     text-align: center;
 }
 
@@ -129,6 +132,23 @@ h2 {
 
 .footer {
     z-index: 99;
+
+    background-color: #96DDFF;
+    color: #343A40;
+}
+
+.transition {
+    background-color: #96DDFF;
+    height: 100vh;
+    margin-right: 1em;
+    z-index: 2;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(10,auto);
+  }
+
     max-width: 100%;
     /* Colorizing used from https://cssgradient.io/ */
     background: rgb(255,153,0);
@@ -152,4 +172,4 @@ h2 {
         margin-left: auto;
         margin-right: auto;
     }
-}
+
